@@ -1,13 +1,13 @@
 #include<iostream> 
 using namespace std;
-void inputArray(int cubesSideLengths[]){
+void inputArray(long long cubesSideLengths[]){
     int i;
 for(i=0; i<5; i++){
 cin>>cubesSideLengths[i];
 }
 }
 int main(){
-    int cubesSideLengths[5];
+    long long  cubesSideLengths[5];
     bool moreORequal;
     int j;
 

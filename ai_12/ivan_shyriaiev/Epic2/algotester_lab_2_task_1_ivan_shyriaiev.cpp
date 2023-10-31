@@ -15,8 +15,7 @@ void bubbleSort(int road[], long length){
             if(road[j]>road[j+1]){
                 swap(road[j], road[j+1]);
                 swapped=true;
-            } else {
-                break; }
+            } 
         }
         if (swapped== false)
 break;
