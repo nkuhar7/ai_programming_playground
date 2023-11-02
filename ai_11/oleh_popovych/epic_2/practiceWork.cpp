@@ -1,5 +1,5 @@
 //
-// Created by elitf on 10/30/2023.
+// Created by olehio-p on 10/30/2023.
 //
 #include <iostream>
 #include <string>
@@ -43,15 +43,15 @@ int main(int argc, char const *argv[])
     }
     else if(weatherCondition == "rainy")
     {
-        std::cout << "Perfect weather to read book inside house" << std::endl;
+        std::cout << "Perfect weather to read a book inside the house" << std::endl;
     }
     else if(weatherCondition == "cloudy")
     {
-        std::cout << "Shall we visit museum" << std::endl;
+        std::cout << "Shall we visit a museum?" << std::endl;
     }
     else if(weatherCondition == "snowy")
     {
-        std::cout << "What about to make a snowman" << std::endl;
+        std::cout << "What about to make a snowman?" << std::endl;
     }
     else
     {
