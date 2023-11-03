@@ -6,13 +6,13 @@ int main()
 {
     //Creating and enetering number
     int number;
-    cout << "Enter number, which you want to raise to a power: ";
-    cin >> number;
+    printf("Enter number, which you want to raise to a power: ");
+    scanf("%d", &number);
 
     //Creating and enetering power
     int power;
-    cout << "Enter power: ";
-    cin >> power;
+    printf("Enter power: ");
+    scanf("%lf", &power);
 
     //Creating answer which will be chnaged during loop
     int answer = 1;
