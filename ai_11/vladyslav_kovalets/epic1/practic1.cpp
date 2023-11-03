@@ -1,6 +1,4 @@
 #include <iostream>
-#include <string>
-using namespace std;
 
 int main()
 {
@@ -14,15 +12,15 @@ int main()
     scanf_s("%lf", &time);
     printf("Please enter rate: ");
     scanf_s("%lf", &rate);
-    string name;
+    char name[100];  
     printf("Enter your name: ");
-    cin >> name;
+    scanf_s("%s", name, _countof(name));
+
 
     for (int i = 0; i < time; i++)
     {
         suma = suma + (suma / 100 * rate);
     }
-    printf("Hi %s, your summa = %f", name.c_str(), suma);
-
+    printf("Hi %s, your summa = %f", name, suma);
     return 0;
 }
