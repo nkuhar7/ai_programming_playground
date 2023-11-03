@@ -15,7 +15,7 @@ int main()
     cout << "Please enter rate ";
     cin >> rate;
     string name;
-    cout << "Enter your mane ";
+    cout << "Enter your name ";
     cin >> name;
     for(int i = 0; i< time; i++)
     {
