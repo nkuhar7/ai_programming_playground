@@ -1,40 +1,44 @@
 //
 // Created by olehio-p on 10/27/2023.
 //
-#include <iostream>
-#include <string>
+#include <cstdio>
 #include <cmath>
 
 
 int main(int argc, char const *argv[])
 {
-    std::string name;
+    char name[30];
     int years, compound;
     double principal, rate, compoundInterest, accruedAmount;
 
-    std::cout << "Please enter your name: ";
-    std::cin >> name;
+    printf("Please enter your name: ");
+    fflush(stdout);
+    scanf("%s", name);
 
-    std::cout << "Enter the principal amount: ";
-    std::cin >> principal;
+    printf("Enter the principal amount: ");
+    fflush(stdout);
+    scanf_s("%lf", &principal);
 
-    std::cout << "Enter the rate of interest (in percentage): ";
-    std::cin >> rate;
+    printf("Enter the rate of interest (in percentage): ");
+    fflush(stdout);
+    scanf_s("%lf", &rate);
 
-    std::cout << "Enter the number of years: ";
-    std::cin >> years;
+    printf("Enter the number of years: ");
+    fflush(stdout);
+    scanf_s("%d", &years);
 
-    std::cout << "Enter the number of times interest is compounded per year "
-              << "(e.g., 1 for annually, 4 for quarterly, 12 for monthly): ";
-    std::cin >> compound;
+    printf("Enter the number of times interest is compounded per year "
+           "(e.g., 1 for annually, 4 for quarterly, 12 for monthly): ");
+    fflush(stdout);
+    scanf_s("%d", &compound);
 
     accruedAmount = principal * pow((1 + (rate / (100 * compound))), years * compound);
     compoundInterest = accruedAmount - principal;
 
-    std::cout << "-------------------------------------------------------------"
-              << "-------------------------------------------------------------" << std::endl;
+    printf("-------------------------------------------------------------"
+           "-------------------------------------------------------------\n");
 
-    std::cout << "Hello, " << name << std::endl;
+    printf("Hello, %s\n", name);
     printf("The compound interest for a principal of %.2f at a rate of %.2f%% "
            "compounded %d times a year for %d years is: %.2f\n",
            principal, rate, compound, years, compoundInterest);
