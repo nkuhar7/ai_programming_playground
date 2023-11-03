@@ -1,7 +1,7 @@
 //
 // Created by olehio-p on 10/27/2023.
 //
-#include <cstdio>
+#include <iostream>
 #include <cmath>
 
 
@@ -12,24 +12,19 @@ int main(int argc, char const *argv[])
     double principal, rate, compoundInterest, accruedAmount;
 
     printf("Please enter your name: ");
-    fflush(stdout);
     scanf("%s", name);
 
     printf("Enter the principal amount: ");
-    fflush(stdout);
     scanf_s("%lf", &principal);
 
     printf("Enter the rate of interest (in percentage): ");
-    fflush(stdout);
     scanf_s("%lf", &rate);
 
     printf("Enter the number of years: ");
-    fflush(stdout);
     scanf_s("%d", &years);
 
     printf("Enter the number of times interest is compounded per year "
            "(e.g., 1 for annually, 4 for quarterly, 12 for monthly): ");
-    fflush(stdout);
     scanf_s("%d", &compound);
 
     accruedAmount = principal * pow((1 + (rate / (100 * compound))), years * compound);
