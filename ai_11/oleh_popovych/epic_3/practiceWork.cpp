@@ -16,11 +16,10 @@ int main(int argc, char const *argv[])
             "War and Peace",
             "The Odyssey",
             "The Iliad",
-            "The Lighthouse",
             "Heart of Darkness"
     };
     std::vector<bool> books_availability = {
-            true, true, true, true, true, true, true, true, true, true
+            true, true, true, true, true, true, true, true, true
     };
     std::string menu = """1. [S]how available books\n"
                          "2. [T]ake book\n"
@@ -79,7 +78,7 @@ int main(int argc, char const *argv[])
             do {
                 std::cout << "Do you want to execute another operation [y]/[n]: ";
                 std::cin >> goOn;
-            } while(action == 's' && goOn == 'n');
+            } while((action == 's' && goOn == 'n') || (goOn != 'y' && goOn != 'n'));
         } while(goOn == 'n');
     }
     return 0;
