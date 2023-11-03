@@ -1,28 +1,29 @@
-#include <iostream>
+#include <cstdio>
 #include <cmath>
 using namespace std;
 
 int main() {
-    string name;
+    char name[51];
     double principal, rate, amount, years;
     int period;
 
-    cout << "Enter name: ";
-    cin >> name;
+    printf("Enter name: ");
+    scanf_s("%50s", name);
 
     // principal is money invested
-    cout << "Enter the principal amount: ";
-    cin >> principal;
+    printf("Enter the principal amount: ");
+    scanf_s("%lf", &principal);
 
-    cout << "Enter interest rate in percents: ";
-    cin >> rate;
+    printf("Enter interest rate in percents: ");
+    scanf_s("%lf", &rate);
     rate /= 100;
 
-    cout << "And how many years? ";
-    cin >> years;
+    printf("And how many years? ");
+    scanf_s("%lf", &years);
 
-    cout << "Enter the time when interest is compounded per year (1 for annually, 4 for quarterly, 12 for monthly): ";
-    cin >> period;
+    printf("Enter the time when interest is compounded per year "
+           "(1 for annually, 4 for quarterly, 12 for monthly): ");
+    scanf_s("%d", &period);
 
     amount = principal * pow((1 + rate / period), period * years);
 
@@ -31,7 +32,7 @@ int main() {
            "at a rate of %.2f%% "
            "compounded %d times a year "
            "for %f years is: %.2f\n",
-           name.c_str(), principal, rate * 100, period, years, amount);
+           name, principal, rate * 100, period, years, amount);
 
     return 0;
 }
