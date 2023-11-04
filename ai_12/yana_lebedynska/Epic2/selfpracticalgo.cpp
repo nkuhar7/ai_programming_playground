@@ -25,4 +25,5 @@ int main()
     cout << "The max number of cookies the girl can eat is: " << can_eat;
 
     return 0;
+    
 }
