@@ -6,7 +6,7 @@ using namespace std;
 int main() {
     char name[100];
     int FinalAmount; 
-
+int Realperiod;
     int time, money, period, stepin;
     float percent, percent0;
 
@@ -23,32 +23,11 @@ int main() {
     printf("нараховування нараховується періодичністю (1,2,3,4,6,12) (в місяцях)?:");
     scanf("%d", &period);
 
-    switch (period) {
-        case 1:
-            period = 12;
-            break;
-        case 2:
-            period = 6;
-            break;
-        case 3:
-            period = 4;
-            break;
-        case 4:
-            period = 3;
-            break;
-        case 6:
-            period = 2;
-            break;
-        case 12:
-            period = 1;
-            break;
-        default:
-            std::cout << "Невідомий період" << std::endl;
-            return 1;
-    }
+Realperiod = 12/period;
 
     printf("Ваше Ім'я?:");
     scanf("%s", name);
+printf("%d", Realperiod);
 
     stepin = time * period;
     FinalAmount = money * pow(1 + percent, stepin);
