@@ -3,17 +3,17 @@
 
 int main() {
   char name[50];
-  double principal, rate, totalAmount, compoundInterest;
+  double capital, percentage, sumtotal, compoundInterest;
   int years, period;
 
   printf("Enter your name: ");
   scanf("%s", name);
 
   printf("Enter your principal amount: ");
-  scanf("%lf", &principal);
+  scanf("%lf", &capital);
 
   printf("Enter the rate: ");
-  scanf("%lf", &rate);
+  scanf("%lf", &percentage);
 
   printf("Enter the number of years: ");
   scanf("%i", &years);
@@ -21,14 +21,14 @@ int main() {
   printf("Enter period: ");
   scanf("%i", &period);
 
-  rate /= (double)100;
+  percentage /= (double)100;
 
-  totalAmount = principal * pow(1 + (rate / period), period * years);
-  compoundInterest = totalAmount - principal;
+  sumtotal = capital * pow(1 + (percentage / period), period * years);
+  compoundInterest = sumtotal - capital;
 
   printf("Hello %s \n", name);
-  printf("The compound interest for a principal of %.2f at a rate of %.2f%% compounded %d times a year for %d years is: %.2f\n", principal, rate * 100, period, years, compoundInterest);
-  printf("Total is %.2f", totalAmount);
+  printf("The compound interest for a principal of %.2f at a rate of %.2f%% compounded %d times a year for %d years is: %.2f\n", capital, percentage * 100, period, years, compoundInterest);
+  printf("Total is %.2f", sumtotal);
 
   return 0;
 }
