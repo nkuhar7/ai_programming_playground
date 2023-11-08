@@ -8,7 +8,6 @@ int main()
     bool win = 1;
     for (int i = 1; i < size_masiv; i++)
     {
-        cout << "Enter size side";
         cin >> a[i];
         if(a[i-1] < a[i] && i != 1)
         {

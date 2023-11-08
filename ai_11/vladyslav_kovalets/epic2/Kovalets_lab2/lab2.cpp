@@ -4,8 +4,8 @@ using namespace std;
 
 int main() 
 {
-    int size_masiv = 100;
-    long Number[size_masiv];
+    unsigned int size_masiv = 100000;
+    unsigned long long Number[size_masiv];
     int N;
 
     cin >> N;
@@ -21,11 +21,19 @@ int main()
     int fatigue_2 = Number[N - 2] - Number[0]; 
     int result;
 
+
     if (fatigue_1 < fatigue_2)
         result = fatigue_1;
     else
         result = fatigue_2;
-    cout << "Minimal fatigue: " << result;
 
+    if (result >= 0)
+    {
+        cout << result;
+    }
+    else 
+    {
+        cout << 0;
+    }
     return 0;
 }
