@@ -40,6 +40,11 @@ int main(){
 
     //bubblesort for arr[n]
     BubbleSort(arr, n);
+    for(int i=0;i<n;i++)
+    {
+    cout<<arr[i]<< " ";
+    }
+    cout << endl;
     //median for bubble sorted arr[n]
     int mediana = median(arr, n);
     //find diff for median from arr[n]
