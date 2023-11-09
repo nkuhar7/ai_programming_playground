@@ -1,7 +1,8 @@
 #include <iostream>
+#include <algorithm>
 
 int main() {
-    int h1, h2, h3, h4, d1, d2, d3, d4;
+    long long h1, h2, h3, h4, d1, d2, d3, d4;
 
     std::cin >> h1 >> h2 >> h3 >> h4;
     std::cin >> d1;
@@ -9,36 +10,20 @@ int main() {
     std::cin >> d3;
     std::cin >> d4;
 
-    h1 -= d1;
-    if(h1-d1 < 0){
-        std::cout << "ERROR";
-    }else if(2*h1 <= h2 || 2*h1 <= h3 || 2*h1 <= h4){
-        std::cout << "NO";
-    }else if(h2-d2 < 0 || h3-d3 < 0 || h4-d4 < 0){
-        std::cout << "ERROR";
-    }else{
-        h2 -= d2;
-        if(2*h2 <= h3 || 2*h2 <= h4){
-            std::cout << "NO";
-        }else if(h1-d1 < 0 || h2-d2 < 0 || h3-d3 < 0 || h4-d4 < 0){
-            std::cout << "ERROR";
-        }else{
-            h3 -= d3;
-            if(2*h3 <= h4){
-                std::cout << "NO";
-            }else if(h1-d1 < 0 || h2-d2 < 0 || h3-d3 < 0 || h4-d4 < 0){
-                std::cout << "ERROR";
-            }else {
-                h4 -= d4;
-                if(h1 < 0 || h2 < 0 || h3 < 0 || h4 < 0){
-                    std::cout << "ERROR";
-                }else if(h1 == h2 && h2 == h3 && h3 == h4){
-                    std::cout << "YES";
-                } else {
-                    std::cout << "NO";
-                }
-            }
-        }
+    if (h1 < d1 || h2 < d2 || h3 < d3 || h4 < d4) {
+        std::cout << "ERROR"<< std::endl;
+    }else if (2 * std::min({h1-d1, h2, h3, h4}) <= std::max({h2, h3, h4})) {
+        std::cout << "NO" << std::endl;
+    }else if (2 * std::min({h2-d2, h3, h4}) <= std::max({h1-d1, h3, h4})) {
+        std::cout << "NO" << std::endl;
+    }else if(2 * std::min(h3-d3, h4) <= std::max({h1-d1, h2-d2, h4})) {
+        std::cout << "NO" << std::endl;
+    }else if(2 * (h4-d4) <= std::max({h1-d1, h2-d2, h3-d3})) {
+        std::cout << "NO" << std::endl;
+    }else if (h1-d1 == h2-d2 && h2-d2 == h3-d3 && h3-d3 == h4-d4 && std::min({h1-d1, h2-d2, h3-d3, h4-d4}) != 0){
+        std::cout << "YES" << std::endl;
+    }else {
+        std::cout << "NO" << std::endl;
     }
 
     return 0;
