@@ -1,7 +1,5 @@
 #include <cstdio>
-#include <iostream>
 #include <cmath>
-using namespace std;
 int main() {
 char name [50];
 double amount, rate;
