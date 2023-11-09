@@ -4,8 +4,8 @@
 using namespace std;
 
 int main(){
-  double c,d,e,f,g,h,x;
-  double a = 100,b = 0.001;
+  float a,b,c,d,e,f,g,h,x;
+  float a = 100,b = 0.001;
 
   c=pow((a+b),4);
   d=pow(a,4);
@@ -17,5 +17,8 @@ int main(){
   x=(c-(d+e+f))/(g+h);
 
   cout<<"x="<<x;
+
+
+
 
 }
