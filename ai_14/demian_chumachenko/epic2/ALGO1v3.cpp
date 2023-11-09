@@ -7,13 +7,11 @@ int main()
 {
     long long a[5];
 
-    cout << "input cube sides value 1-5: ";
     cin >> a[0] >> a[1] >> a[2] >> a[3] >> a[4];
 
     for(int i = 0; i < sizeof(a) / sizeof(long long); i++){
         if(a[i] <= 0){
             cout << "ERROR" <<endl;
-            cout << a[i];
             break;
         }
         else if(i < sizeof(a) / sizeof(long long) -1 && a[i] < a[i+1]){
