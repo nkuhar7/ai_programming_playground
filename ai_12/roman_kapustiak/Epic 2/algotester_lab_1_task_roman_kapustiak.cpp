@@ -4,31 +4,42 @@ using namespace std;
 
 int main()
 {
-    long long edges[5];
+    long long edge, nextEdge;
+    int n = 4;
+    
+    if(!(cin >> edge))
+    {
+        cout << "Wrong input!\n";
+        return 1;
+    }
 
-    for (int i = 0; i < 5; i++)
-    {   
-        if(!(cin >> edges[i]))
+    if (edge <= 0)
+    {
+        cout << "ERROR\n";
+        return 0;
+    }
+
+    while(n--)
+    {
+        if(!(cin >> nextEdge))
         {
             cout << "Wrong input!\n";
             return 1;
         }
-        if(edges[i] <= 0)
+
+        if (nextEdge <= 0)
         {
             cout << "ERROR\n";
             return 0;
         }
-    }
-
-    for (int i = 0; i < 4; i++)
-    {
-        if(edges[i] < edges[i + 1])
+        if (edge < nextEdge)
         {
             cout << "LOSS\n";
-            return 0; 
+            return 0;
         }
+        edge = nextEdge;
     }
-    
+
     cout << "WIN\n";
 
     return 0;
