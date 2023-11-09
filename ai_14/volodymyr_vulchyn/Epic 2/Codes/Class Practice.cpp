@@ -8,7 +8,7 @@ int main()
 
 
     cout << "Enter the weather conditions: ";
-    getline(std::cin, weather);
+    getline(cin, weather); // використвуємо функцію getline, адже без неї, буде зчитуватись лише перше слово/буква після першого пробілу.
     if (weather != "cloudy" && weather != "snowy" && weather != "rainy" && weather != "windy" && weather != "sunny")
     {
         cout << "You entered unappropriate data";
@@ -23,7 +23,7 @@ int main()
         }
         else
         {
-            cout << "You may not take the jacket" << endl;;
+            cout << "You have not take the jacket" << endl;;
         }
 
 
@@ -40,7 +40,6 @@ int main()
         else if (weather == "cloudy")
         {
             cout << "Maybe, visit the museum?" << endl;
-           
 
         }
         else if(weather == "snowy")
@@ -77,8 +76,7 @@ int main()
         case 'w':
             cout << "Wear something strong" << endl;
             break;
-
-         }
+}
         
         
 
