@@ -32,5 +32,6 @@ Trueperiod= 12/period;
     FinalAmount = money * pow(1 + percent, Pow);
 
     printf("%s, Вашою кінцевою сумою депозиту за %f %% за %d років буде : %.5f\n", name, percent0, time, FinalAmount); 
-    return 0;
+                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                    return 0;
 }
