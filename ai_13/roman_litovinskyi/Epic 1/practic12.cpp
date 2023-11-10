@@ -8,7 +8,7 @@ int main() {
     
     printf("Enter your name: \n");
     scanf("%s", name); 
-
+    
     printf("Enter the principal amount: \n");
     scanf("%f", &principal);
 
