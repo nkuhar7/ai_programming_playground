@@ -1,35 +1,36 @@
 #include<iostream>
 using namespace std;
-void inputRoad(int road[],long length ){
-    int i;
-    for(i=0; i<length; i++){
-        cin>> road[i];
-    }
-}
-void bubbleSort(int road[], long length){
-     int i, j;
-    bool swapped;
-    for(i=0; i<length-1;i++){
-        swapped = false;
-        for(j=0; j<length-i-1; j++){
-            if(road[j]>road[j+1]){
-                swap(road[j], road[j+1]);
-                swapped=true;
-            } 
-        }
-        if (swapped== false)
-break;
-   }
-}
 
+void bubbleSort(int road[], int length) 
+{ 
+    int i, j; 
+    for (i = 0; i < length - 1; i++)  
+        for (j = 0; j < length - i - 1; j++) 
+            if (road[j] > road[j + 1]) 
+                swap(road[j], road[j + 1]); 
+} 
 int main(){
-    printf("enter the length of the road \n");
-    long length;
+    int  length, i;
      cin>> length;    
+ if(length<1||length>100000){
+     return 0;
+    }
+
     int road[length];
-    inputRoad(road,  length);
-    bubbleSort(road,  length);   
-long a = road[length-2]-road[0]; 
-long b = road[length-1]-road[1];
-cout<< min(a,b);
+ for(i=0; i<length; i++){
+        cin>> road[i];
+        if(road[i]<0 || road[i]>100000){
+            return 0;
+            }
+    }
+
+ if(length == 1){
+    cout<< 0;
+    return 0;
+    }
+ bubbleSort(road, length);
+int  a = road[length-2]-road[0]; 
+int  b = road[length-1]-road[1];
+int result = min(a,b);
+cout<< result ;
 }
