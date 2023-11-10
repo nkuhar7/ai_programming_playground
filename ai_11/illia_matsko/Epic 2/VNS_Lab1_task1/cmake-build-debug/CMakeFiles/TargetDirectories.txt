@@ -1,0 +1,3 @@
+/Users/illiamatsko/Projects/Studying/ai_programming_playground/ai_11/illia_matsko/Epic 2/VNS_Lab1_task1/cmake-build-debug/CMakeFiles/Lab_01.dir
+/Users/illiamatsko/Projects/Studying/ai_programming_playground/ai_11/illia_matsko/Epic 2/VNS_Lab1_task1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/illiamatsko/Projects/Studying/ai_programming_playground/ai_11/illia_matsko/Epic 2/VNS_Lab1_task1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
