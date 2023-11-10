@@ -1,30 +1,27 @@
 #include <iostream>
-
 using namespace std;
+
 int main() {
-    int health, mana;
-    int allH = 0, allM = 0;
-    bool usedB = false; 
-    cin >> health>>mana;
+    
+   long long H, M;
+    bool usedB = false;
+    cin >> H >> M;
+
+    unsigned long long usedH[3], usedM[3];
+
     for (int i = 0; i < 3; i++) {
-        int usedH, usedM;
+        cin >> usedH[i] >> usedM[i];
 
-        cin >> usedH>>usedM;
-
-        if (usedH > 0 && usedM> 0) {
+        if (usedH[i] > 0 && usedM[i] > 0) {
             usedB = true;
         }
-
-        allH += usedH;
-        allM += usedM;
-
-        health -= usedH;
-        mana -= usedM;
+        H -= usedH[i];
+        M -= usedM[i];
     }
 
     if (usedB) {
         cout << "NO" << endl;
-    } else if (allH > 0 || allM > 0) {
+    } else if (H > 0 && M > 0) {
         cout << "YES" << endl;
     } else {
         cout << "NO" << endl;

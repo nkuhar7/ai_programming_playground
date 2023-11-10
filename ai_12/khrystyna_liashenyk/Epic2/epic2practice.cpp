@@ -4,32 +4,38 @@
 using namespace std;
 
 int main() {
-    string weather = "";
-    char weather1;
-    cout << "What is the weather like today? (sunny, rainy, windy, cloudy) " << endl;
-    cin >> weather1;
-    weather = weather + weather1;
- if ( weather != "r" && weather != "c" && weather != "s" && weather != "w") {
+    
+    string weather;
+    cout << "What is the weather like today? (sunny, rainy, windy, cloudy, snowy) " << endl;
+    cin >> weather;
+ if ( weather != "rainy" && weather != "cloudy" && weather != "snowy" && weather != "windy" && weather != "sunny") {
         cout << "Please enter a valid weather condition." << endl;
-        cin >> weather1;
-    weather = weather + weather1;
+        cin >> weather;
     }
-    if (weather == "r")
+    if (weather == "rainy"|| weather=="snowy")
         cout << "You need to wear a coat" << endl;
     else 
         cout << "You don't need to wear a coat" << endl;
-    if (weather == "s")
+    if (weather == "sunny")
         cout << "A great day to have a picnic" << endl;
-    else if (weather == "r")
+    else if (weather == "rainy")
         cout << "The weather outside is perfect for staying indoors and enjoying a good book" << endl;
-    else if (weather == "c")
+    else if (weather == "cloudy")
         cout << "Would you like to consider visiting a museum?" << endl;
-    else if (weather == "w")
+    else if (weather == "windy")
         cout << "If you have a kite, go ahead and fly it" << endl;
+        else if (weather == "snowy")
+        cout << "How about making a snowman?" << endl;
 
-    switch (weather1) {
+
+    switch (weather[0]) {
         case 's':
-            cout << "Put on your best sneakers" << endl;
+            if(weather=="sunny"){
+                cout<<"Wear your favorite sneakers!"<<endl;
+            }
+            else if(weather=="snowy"){
+                cout<<"Snow boots will keep your feet warm!"<<endl;
+            }
             break;
         case 'c':
             cout << "Today, any type of shoe can be worn" << endl;
