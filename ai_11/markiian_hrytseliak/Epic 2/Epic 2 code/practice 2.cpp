@@ -28,7 +28,7 @@ int main(){
         else if(weather=="snowy"){
         cout<<"Play snowballs"<<endl;}
 
-        else if(weather=="sunny"){
+        else if(weather=="windy"){
         cout<<"Stay at home"<<endl;}
 
     cout<<"Which footwear?"<<endl;
