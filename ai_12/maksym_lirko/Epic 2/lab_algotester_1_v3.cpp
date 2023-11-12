@@ -1,28 +1,27 @@
 #include<iostream>
+#include<math.h>
 using namespace std;
 
 int main()
 {    
-    int a[5];
-    cout<<"Enter numbers in array: "<<endl;
-    for(int i=0; i<5; i++)
+    long long cube[5];
+
+    for( short i=0; i<5; i++)  
     {
-        
-        cin>>a[i]; 
-       
-        if (a[i]<=0)
+        cin>>cube[i];
+
+       if (cube[i]<=0 || cube[i] <= -pow(10, 12) || cube[i] >= pow(10, 12) )
         {
             cout<<"ERROR"<<endl;
             return 0;
         }
+        if( i>0 && cube[i-1]<cube[i])
+        {
+            cout<<"LOSS"<<endl;
+            return 0;
+        }
     }
-     if (a[0]>=a[1]&&a[1]>=a[2]&&a[2]>=a[3]&&a[3]>=a[4])
-    {
-        cout<<"WIN"<<endl;
-    }
-    else{
-        cout<<"LOSS"<<endl;
-    }
-     
+    cout<<"WIN"<<endl;
     return 0;
 }
+
