@@ -9,26 +9,25 @@ int main()
     double rate; 
     int time;
     int n; 
-    double a;
-    double q;
+    double totalamount,compoundInterest;
 
     printf("Enter your name");
     scanf("%s",name);
-    printf("Enter your principal");
+    printf("Enter the principal amount");
     scanf("%lf",&principal);
     printf("Enter rate:");
     scanf("%lf",&rate );
-    printf("Enter years:");
+    printf("Enter the number of years:");
     scanf("%d",&time);
     printf("Enter period:");
     scanf("%d",&n);
 
     rate  /=(double) 100;
-    a=principal*pow(1+(rate/n),n*time);
-    q=a-principal;
+    totalamount=principal*pow(1+(rate/n),n*time);
+    compoundInterest=totalamount-principal;
     printf("Hello %s",name);
-    printf("\nThe compound interest for a principal of %.2f at a rate of %.2f%% compounded %d times a year for %d years is %.2f\n",principal,rate*100,n,time,q);
-    printf("Total is: %.2f",a);
+    printf("\nThe compound interest for a principal of %.2f at a rate of %.2f%% compounded %d times a year for %d years is %.2f\n",principal,rate*100,n,time,compoundInterest);
+    printf("Total is: %.2f",totalamount);
 
     return 0;
 }
