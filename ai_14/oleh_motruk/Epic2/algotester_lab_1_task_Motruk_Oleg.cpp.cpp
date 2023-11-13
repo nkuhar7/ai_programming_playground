@@ -8,7 +8,6 @@ int main() {
     long long numbers[n];
     string check;
 
-    cout << "Enter a side of cube:" << endl;
     for (int i = 0; i < n; i++) {
         cin >> numbers[i];
         if (numbers[i] <= 0) {
