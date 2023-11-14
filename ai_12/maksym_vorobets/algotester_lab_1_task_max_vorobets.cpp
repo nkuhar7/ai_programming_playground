@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 int main(){
-    unsigned long long h1, h2, h3, h4;
-    unsigned long long d1, d2, d3, d4;
+    long long h1, h2, h3, h4;
+    long long d1, d2, d3, d4;
     scanf("%lld %lld %lld %lld", &h1, &h2, &h3, &h4);
     scanf("%lld %lld %lld %lld", &d1, &d2, &d3, &d4);
         int min_h=h1;
