@@ -50,16 +50,16 @@ int main(){
     if(WHEATHER == "sunny"){
         wheathertype=wheathers::sunny;
     }
-    if(WHEATHER == "snowy"){
+    else if(WHEATHER == "snowy"){
         wheathertype=wheathers::snowy;
     }
-    if(WHEATHER == "windy"){
+    else if(WHEATHER == "windy"){
         wheathertype=wheathers::windy;
     }
-    if(WHEATHER == "rainy"){
+    else if(WHEATHER == "rainy"){
         wheathertype=wheathers::rainy;
     }
-    if(WHEATHER == "cloudy"){
+    else if(WHEATHER == "cloudy"){
         wheathertype=wheathers::cloudy;
     }
 
