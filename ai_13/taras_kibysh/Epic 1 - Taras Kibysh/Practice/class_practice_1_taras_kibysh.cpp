@@ -25,6 +25,7 @@ int main()
     printf("Enter the rate of interest:");
     scanf("%lf", &rate);
     printf("%lf\n", rate);
+    rate = rate *0.01;
 
 
 
