@@ -7,7 +7,7 @@ int main() {
     double r;
 
     printf("Введіть ваше ім'я \n");
-    scanf("%s", name);
+    scanf("%s", &name);
 
     printf("Основна сума інвестиції: ");
     scanf("%d", &P);
