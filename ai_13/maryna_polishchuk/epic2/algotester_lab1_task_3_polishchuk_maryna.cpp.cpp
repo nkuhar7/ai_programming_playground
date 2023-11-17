@@ -7,6 +7,7 @@ int main() {
     {
         
         std::cin >> num [i];
+    
         
         if (num [i]<=0)
         {
