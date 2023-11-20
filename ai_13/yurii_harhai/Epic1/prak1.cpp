@@ -31,10 +31,10 @@ int main()
 
     double A = pricipal * pow((1 + (rate / times)), times * years);
     double B = pricipal - A;
-
+    double G {0.1234};
     printf("Hello %s!\n",name);
     printf("The compound interest for a principal of %.2f at a rate of %.2f%% compounded %d times a year for %d years is: %.2f\n ", pricipal, rate * 100, times, years, B);
     printf("The total amount after 3 years is %.2f",A);
-
+  
     return 0;
 }
