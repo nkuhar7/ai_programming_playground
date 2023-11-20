@@ -11,7 +11,7 @@ int main()
 	float m = 3 * a * pow(b, 2);
 	float n = pow(b, 3);
 	float p = 3 * pow(a, 2) * b;
-	float zz = m + n + p;
+	float zz = m +
 	float final = z / zz;
 	cout << final << endl;
     	

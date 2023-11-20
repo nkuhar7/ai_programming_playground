@@ -11,7 +11,7 @@ int main()
     cin >> n;
     int a = n++ * m;
     bool b = n++ < m;
-    bool c = m-- > m;
+    bool c = (m--) > m;
     cout << boolalpha;
     cout << a << endl;
     cout << b << endl;
