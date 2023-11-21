@@ -17,6 +17,7 @@ int main()
     printf("Enter rate:");
     scanf("%lf",&rate );
     printf("Enter the number of years:");
+    scanf("%d" ,&time);
     printf("Enter period:");
     scanf("%d",&n);
 
