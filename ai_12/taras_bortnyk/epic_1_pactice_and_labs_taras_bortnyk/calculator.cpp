@@ -31,4 +31,5 @@ int main() {
   printf("Total is %.2f", sumtotal);
 
   return 0;
+  
 }
