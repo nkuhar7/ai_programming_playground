@@ -17,7 +17,7 @@ scanf("%lf", &deposit);
 printf ("Enter the interest:");
 scanf("%lf", &interest);
 
-printf("enter period:");
+printf("enter period:"); 
 scanf("%d", &period);
 
 printf ("Enter the number of years:");         
