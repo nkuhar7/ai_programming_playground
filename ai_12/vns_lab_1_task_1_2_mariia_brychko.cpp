@@ -27,6 +27,4 @@ bool G3 = (n3++)>m3;
 cout << "The n++>m is (true - 1, false - 0): " << G3;
     return 0; }
 
-
-
     
