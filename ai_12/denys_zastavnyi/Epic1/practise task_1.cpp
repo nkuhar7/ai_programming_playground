@@ -10,15 +10,15 @@ int main()
     int n;      
     double totalamount,compoundInterest;
 
-    printf("Enter your name");
-    scanf("%s",name);
-    printf("Enter the principal amount");
+    printf("Enter your name ");
+    scanf("%s",&name);
+    printf("Enter the principal amount ");
     scanf("%lf",&principal);
-    printf("Enter rate:");
+    printf("Enter rate: ");
     scanf("%lf",&rate );
-    printf("Enter the number of years:");
+    printf("Enter the number of years: ");
     scanf("%d",&time);
-    printf("Enter period:");
+    printf("Enter period: ");
     scanf("%d",&n);
 
     rate  /=(double) 100;
