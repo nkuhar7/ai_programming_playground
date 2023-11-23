@@ -17,5 +17,3 @@ if(cubesSideLengths[i]<1){
 cout<<"WIN\n";
 return 0;
 }
-
-
