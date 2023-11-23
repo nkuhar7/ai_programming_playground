@@ -1,3 +1,0 @@
-/Users/illiamatsko/Desktop/Epic 2/self_practice_illia_matsko/cmake-build-debug/CMakeFiles/self_practice_illia_matsko.dir
-/Users/illiamatsko/Desktop/Epic 2/self_practice_illia_matsko/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/illiamatsko/Desktop/Epic 2/self_practice_illia_matsko/cmake-build-debug/CMakeFiles/rebuild_cache.dir
