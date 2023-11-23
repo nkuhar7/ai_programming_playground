@@ -5,7 +5,7 @@ using namespace std;
 long int h[4], d[4];
 
 int main() {
-    for(int i = 0; i < 4; ++i){
+     for(int i = 0; i < 4; ++i){
         cin >> h[i];
     }
 
