@@ -2,24 +2,24 @@
 #include <cmath>
 
 int main() {
-    int years, number;
-    float principal, compoundInterest, rate; 
-    char name[20];
+    int number, years;
+    float principal, rate, compoundInterest; 
+    char name[39];
     
-    printf("Enter your name: \n");
+     printf("Enter your name: \n");
     scanf("%s", name); 
 
     printf("Enter the principal amount: \n");
     scanf("%f", &principal);
 
-    printf("Enter the rate of interest (e.g 0.05 if it is 5%%): \n"); 
+    printf("Enter the rate of interest (enter 0.9 if it is 90%%): \n"); 
     scanf("%f", &rate);
 
     printf("Enter the number of years: \n");
-    scanf("%d", &years); 
+    scanf("%i", &years); 
 
-    printf("Enter the number of times interest is compounded per year (e.g.1 for annually, 4 for quarterly, 12 for monthly): \n");
-    scanf("%d", &number); 
+    printf("Enter the number of times interest is compounded per year: \n");
+    scanf("%i", &number); 
 
     compoundInterest = principal * pow((1 + (rate / number)), number * years);
 
