@@ -1,0 +1,3 @@
+/Users/romanbodnar/Desktop/Epic 2/vns_lab_1_task_1_roman_bodnar/cmake-build-debug/CMakeFiles/untitled.dir
+/Users/romanbodnar/Desktop/Epic 2/vns_lab_1_task_1_roman_bodnar/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/romanbodnar/Desktop/Epic 2/vns_lab_1_task_1_roman_bodnar/cmake-build-debug/CMakeFiles/rebuild_cache.dir

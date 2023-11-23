@@ -1,0 +1,3 @@
+/Users/romanbodnar/Desktop/Epic 2/algotester_lab_1_task_1_roman_bodnar/cmake-build-debug/CMakeFiles/Bodnar_R__Algotester_Lab_1_T_1.dir
+/Users/romanbodnar/Desktop/Epic 2/algotester_lab_1_task_1_roman_bodnar/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/romanbodnar/Desktop/Epic 2/algotester_lab_1_task_1_roman_bodnar/cmake-build-debug/CMakeFiles/rebuild_cache.dir

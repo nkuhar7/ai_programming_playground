@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.26"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Bodnar_R__lab_1__2_",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Bodnar_R__lab_1__2_::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Bodnar_R__lab_1__2_-Debug-3ec8d11a65ca3030b0c8.json",
+					"name" : "Bodnar_R__lab_1__2_",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/romanbodnar/Desktop/Epic 2/vns_lab_1_task_2_roman_bodnar/cmake-build-debug",
+		"source" : "/Users/romanbodnar/Desktop/Epic 2/vns_lab_1_task_2_roman_bodnar"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 5
+	}
+}
