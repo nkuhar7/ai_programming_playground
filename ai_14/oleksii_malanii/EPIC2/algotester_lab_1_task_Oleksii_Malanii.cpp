@@ -1,14 +1,12 @@
 #include <iostream>
 using namespace std;
 int main() {
-    int h[4], d[4];
-    for (int i = 0; i < 4; i++) {
-        cin >> h[i];
-    }
+    long long h[4],d[4]; 
+    cin >> h[0] >> h[1] >> h[2] >> h[3];
     for (int i = 0; i < 4; i++) {
         cin >> d[i];
     }
-    int h_max, h_min, h_max_i, h_min_i;
+    long long h_max, h_min, h_max_i, h_min_i;
     h_max = h_min = h[0];
     for (int i = 0; i < 4; ++i) {
         if (h[i] >= h_max){
