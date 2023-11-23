@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.26"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "vns_lab_1_task_1_illia_matsko",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "vns_lab_1_task_1_illia_matsko::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-vns_lab_1_task_1_illia_matsko-Debug-cf98661ac05c807d8b06.json",
+					"name" : "vns_lab_1_task_1_illia_matsko",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/illiamatsko/Desktop/Epic 2/vns_lab_1_task_1_illia_matsko/cmake-build-debug",
+		"source" : "/Users/illiamatsko/Desktop/Epic 2/vns_lab_1_task_1_illia_matsko"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 5
+	}
+}
