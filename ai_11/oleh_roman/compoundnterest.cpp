@@ -22,16 +22,4 @@ int main(){
 
     printf("Dear %s, your profit after %.0lf years will be: %.2lf\n", name, y, profit);
     return 0;
-    // string name;
-    // cout << "your name" <<endl;
-    // cin >> name;
-    // cout << "interest="<<endl;
-    // cin >> p;
-    // cout << "years="<<endl;
-    // cin >> y;
-    // cout << "first contribution="<<endl;
-    // cin >> f;
-    // double profit=f * pow (1+p/100.0,y);
-    // cout << "Dear" << name << "your profi=" << profit;
-    // return 0;
 }
