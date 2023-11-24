@@ -16,11 +16,8 @@ int main()
 
 void task1()
 {
-    double a, b;
-    cout << "Enter a: ";
-    cin >> a;
-    cout << "Enter b: ";
-    cin >> b;
+    double a = 10000;
+    double b = 0.001;
     cout << countPolynomial(a, b) << "\n";
 }
 
