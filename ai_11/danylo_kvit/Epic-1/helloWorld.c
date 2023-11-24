@@ -1,5 +1,5 @@
-#include <cstdio>
-#include <cmath>
+#include <stdio.h>
+#include <math.h>
 int main1() {
     char name[20];
     printf("Name: ");
