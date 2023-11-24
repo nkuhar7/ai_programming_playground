@@ -4,31 +4,18 @@ using namespace std;
 int main()
 {
     int n, m;
-    cout << "Enter 2 numbers: " << endl;
+    cout << "Enter n and m" << endl;
     cin >> n >> m;
     
     int num1 = n---m;
-    cout << "n - m = " << num1 << endl;
+    cout << "n --- m = " << num1 << endl;
     
-    if (m-- < n)
-    {
-        cout << "m--<n = true" << endl;
-    }
-    else
-    {
-        cout << "m--<n = false" << endl;
-    }
-
-    if (n++ > m)
-    {
-        cout << "n++>m = true" << endl;
-    }
-
-    else
-    {
-        cout << " n++>m = false" << endl;
-    }
-
+    int num2 =(m--<n);
+    cout<<"m--n<n = "<<num2<<endl;
+    
+    int num3=(n++>m);
+    cout<<"n++>m = "<<num3<<endl;
+    
 
     return 0;
 }
