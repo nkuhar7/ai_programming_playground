@@ -5,7 +5,7 @@ int main() {
 long long H, M, h1, h2, h3, m1, m2, m3;
 
 cin >> H;
-cin >> M;
+cin >>  M;
 
 cin >> h1;
 cin >> m1;
