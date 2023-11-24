@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    vector<long> arr;
+    int arr[5];
     long k;
 
     for (int i = 0; i < 5; i++)
@@ -21,7 +21,7 @@ int main()
             return 0;
         }
 
-        arr.push_back(k);
+        arr[i] = k;
     }
 
     cout << "WIN";
