@@ -27,7 +27,7 @@ int main() {
 
     printf("Hello %s \n", name);
     printf("The compound  interest for a principal of %f at a rate of %f compounded %f  times a tear is %f \n", princ,  rate*100, per, result);
-    printf("Total income after %f years is: %f ", years, income);
+    printf("Total income after %f years is: %.2f ", years, income);
 
     return 0;
 
