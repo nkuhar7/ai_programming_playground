@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <math.h>
-int main1() {
-    char name[20];
+int main() {
+    char name[30];
     printf("Name: ");
-    scanf("%s", &name);
+    scanf("%s", name);
 
     float princ;
     printf("Principal amount: ");
@@ -28,5 +28,7 @@ int main1() {
     printf("Hello %s \n", name);
     printf("The compound  interest for a principal of %f at a rate of %f compounded %f  times a tear is %f \n", princ,  rate*100, per, result);
     printf("Total income after %f years is: %f ", years, income);
+
+    return 0;
 
 }
