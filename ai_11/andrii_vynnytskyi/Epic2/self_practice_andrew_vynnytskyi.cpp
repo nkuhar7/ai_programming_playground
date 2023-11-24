@@ -80,6 +80,6 @@ int main()
     numbers = bucket_sort(numbers);
     cout<<"\nSorted array: ";
     print_array(numbers);
-
+    return 0;
 
 }

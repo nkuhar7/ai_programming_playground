@@ -1,66 +1,85 @@
-#include<iostream>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <ctime>
 using namespace std;
 
-
-int main() {
-    string weather;
-    cout << "Please enter the current weather\n- sunny\n- rainy\n- cloudy\n- snowy\n- windy\n: ";
-    cin >> weather;
-
-    if (weather == "snowy" || weather == "rainy") {
-        cout << "Yes, you need wear a coat today\n";
-    } else {
-        cout << "No, you don't need a coat today\n";
-    }
-
-
-    if (weather == "sunny")
+int min_vec_idx(vector<int> nums)
+{
+    int min = nums[0];
+    int min_idx = 0;
+    for(int i = 0; i < nums.size(); i++)
     {
-        cout << "You can go for a walk today\n";
+        if(min > nums[i])
+        {
+            min = nums[i];
+            min_idx = i;
+        }
     }
-    else if (weather == "rainy")
+    return min_idx;
+}
+
+
+vector<int> selection_sort(vector<int> nums)
+{
+    vector<int> buff_num;
+    for(int i = nums.size();i >= 0 && nums.size() != 0; i--)
     {
-        cout << "You can learn how to write a program or watch films\n";
+        int min = min_vec_idx(nums);
+      buff_num.push_back(nums[min]);
+      nums.erase(nums.begin() + min );
     }
-    else if (weather == "cloudy")
+    return buff_num;
+}
+
+
+
+vector<int> bucket_sort(vector<int> numbers)
+{
+    int max = *max_element(numbers.begin(),numbers.end());
+    vector<vector<int>> buff(max/10 + 1);
+    vector<int> buff_sort;
+    for (int i = 0;i < numbers.size(); i++)
     {
-        cout << "It is a good day for shopping\n";
+        buff[numbers[i]/10].push_back(numbers[i]);
     }
-    else if (weather == "snowy")
+    for (int j = 0;j < buff.size();j++)
     {
-        cout << "It is a bad idea to go out\n";
+        buff[j]= selection_sort(buff[j]);
     }
-    else if (weather == "windy") {
-        cout << "Try to stay on Earth, do not fly\n";
+    for(int i = 0; i < buff.size(); i++)
+    {
+        for(int j = 0; j < buff[i].size(); j++)
+        {
+           buff_sort.push_back(buff[i][j]) ;
+        }
     }
+    return buff_sort;
 
 
 
-    switch (weather[0]) {
-        case 's':
-            if(weather == "sunny")
-            {
-                cout << "Wear your favourite T-shirt, shorts and sandals\n";
-            }
-            else
-            {
-                cout << "Wear coat, beautiful sweater, blue jeans and boots\n";
-            }
-            break;
-        case 'r':
-            cout << "Take umbrella, wear raincoat and rain boots\n";
-            break;
-        case 'c':
-            cout << "You can wear suit or something else\n";
-            break;
-        case 'w':
-            cout << "Wear something warm\n";
-            break;
-        default:
-            cout << "This weather are not in list\n";
-            break;
+}
+void print_array(vector<int> numbers)
+{
+    for(int i = 0; i < numbers.size();i++)
+    {
+        cout<< numbers[i]<<" ";
     }
+}
 
-
+int main()
+{
+    srand(time(0));
+    vector<int> numbers = {};
+    for(int i = 0; i < 10;i++)
+    {
+        numbers.push_back(rand() % 100);
+    }
+    cout<<"Array: ";
+    print_array(numbers);
+    numbers = bucket_sort(numbers);
+    cout<<"\nSorted array: ";
+    print_array(numbers);
     return 0;
+
 }

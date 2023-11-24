@@ -59,7 +59,5 @@ int main()
     cout << "\nTask two:\n1)"<< difference(m , n);
     cout << "\n2)"<< check1(m, n);
     cout << "\n3)"<< check2(m,n);
-    /*  cout << "\nTask two:\n1)"<< n---m;
-    cout << "\n2)"<< (m-- < n) ? "True" : "False";;
-    cout << "\n3)"<< (m++ > n) ? "True" : "False";*/
+    return 0;
 }
