@@ -3,10 +3,16 @@
 #include <algorithm>
 using namespace std;
 
-vector<string> weatherStrings = {"rainy", "cloudy", "sunny", "snowy", "windy"};
 enum weather {Rainy, Cloudy, Sunny, Snowy, Windy};
 
 int main() {
+    vector<string> weatherStrings;
+    weatherStrings.push_back("rainy");
+    weatherStrings.push_back("cloudy");
+    weatherStrings.push_back("sunny");
+    weatherStrings.push_back("snowy");
+    weatherStrings.push_back("windy");
+
     string weather;
     cin >> weather;
 
@@ -23,26 +29,21 @@ int main() {
         cout << endl << "Wear a snow jacket";
     }
     if (weather == "windy") {
-         cout << endl << "Wear a scarf";
-    }
-    else if (weather == "rainy") {
+        cout << endl << "Wear a scarf";
+    } else if (weather == "rainy") {
         cout << endl << "Go to record the weather";
-    }
-    else if (weather == "cloudy") {
+    } else if (weather == "cloudy") {
         cout << endl << "Go to the park";
-    }
-    else if (weather == "sunny") {
+    } else if (weather == "sunny") {
         cout << endl << "Go on a picnic";
-    }
-    else if (weather == "snowy") {
+    } else if (weather == "snowy") {
         cout << endl << "Throw snowballs";
-    }
-    else if (weather == "windy") {
+    } else if (weather == "windy") {
         cout << endl << "Take a pictures around";
     }
 
     size_t weatherIndex = std::find(weatherStrings.begin(), weatherStrings.end(), weather) - weatherStrings.begin();
-    auto weather1 = (enum weather)weatherIndex;
+    enum weather weather1 = (enum weather) weatherIndex;
     switch (weather1) {
         case Rainy :
             cout << endl << "Wear rubber boots";
