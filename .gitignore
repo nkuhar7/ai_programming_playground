@@ -33,5 +33,10 @@
 
 *.DS_Store
 
+<<<<<<< HEAD
 .idea
 cmake-build-debug
+=======
+.idea/
+cmake-build-debug/
+>>>>>>> c7952edeb00072af0757861d4ed971f786406ac9
