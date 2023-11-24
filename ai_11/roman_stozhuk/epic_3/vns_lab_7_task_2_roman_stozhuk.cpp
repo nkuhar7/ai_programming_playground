@@ -13,7 +13,7 @@ double getImagine() {return m_imagine;}
 };
 
 Complex minus(Complex first, Complex second) {
-    return (first.getReal() - second.getReal(), first.getImagine() - second.getImagine()); 
+    return Complex(first.getReal() - second.getReal(), first.getImagine() - second.getImagine()); 
 }
 
 std::ostream& operator<<(std::ostream &out, Complex number) {
