@@ -1,7 +1,6 @@
 #include<iostream>
-#include<string>
 #include<math.h>
-using namespace std;
+
 
 int main(){
     string name;
@@ -26,7 +25,7 @@ int main(){
 
     results = principal * pow((1 + rate/period), years*period);
 
-    printf("\nResult is: %lf \n", results);
+    printf("\nResult is: %.2lf \n", results);
 
     return 0;
 }
