@@ -72,7 +72,6 @@ int main(){
     min = MIN(h1, h2, h3, h4);
     if(max >= 2 * min && max >= 0 && min >= 0) rev++;
 
-    //Вивід результату
     if(h1 > 0 && h2 > 0 && h3 > 0 && h4 > 0 && rev == 0) cout<<"YES"<<endl;
     else if(h1 < 0 || h2 < 0 || h3 < 0 || h4 < 0 ) cout<<"ERROR"<<endl;
     else cout<<"NO"<<endl;
