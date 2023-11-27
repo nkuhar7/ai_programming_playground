@@ -30,14 +30,11 @@ int main(int argc, char const *argv[])
 
     }
     while (n>=precision);
-    cout << sum<<endl;
+     cout<<"X" << x<<" ";
+    cout<<"SE" << sum<<" ";
     sum = 0;
     k=0;
-    }
-    cout << "________________________________________fixed number"<<endl;
-    for (double x = a; x <= b; x+=(b-a)/10)
-    {
-        for (size_t i = 0; i < itterN; i++)
+    for (size_t i = 0; i < itterN; i++)
         {
         if(k==0){
             // n= 7*sqrt(e)/4;
@@ -51,25 +48,18 @@ int main(int argc, char const *argv[])
             n= pow(2,-k)*(1/tgamma(-2+k)+1/tgamma(-1+k)+1/tgamma(k))*pow(x,k);
         }
         
-        sum += n  ;
+        sum += n;
 
         k +=1;
 
     }
 
-    cout << sum<<endl;
+    cout<<"SN" << sum<<" ";
     sum = 0;
     k=0;
-    }
-    cout << "________________________________________specific precision"<<endl;
-    for (double x = a; x <= b; x+=(b-a)/10)
-    {
-        
-
-    cout << (pow(x,2)/4+x/2+1)*pow(e,x/2)<<endl;
+    cout<<"Y:" << (pow(x,2)/4+x/2+1)*pow(e,x/2)<<endl;
     
     }
-    cout << "________________________________________precise result"<<endl;
     
 
     
