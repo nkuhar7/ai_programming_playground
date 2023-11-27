@@ -1,11 +1,10 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 
 int main()
 {
-    int arr[5];
-    long k;
+    long long arr[5];
+    long long k;
 
     for (int i = 0; i < 5; i++)
     {
