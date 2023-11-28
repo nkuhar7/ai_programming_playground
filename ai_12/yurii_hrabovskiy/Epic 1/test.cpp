@@ -27,6 +27,6 @@ int main()
     A=pricipal*pow(1+(r/period),period*years);
     s=A-pricipal;
     
-    printf("Hi, %s.\nThe compound interest for a prinsipal of %.2f at a rate of %.2f%%  compounded %d times a year for %d years is:%.2f. \nTotal amount after %.2f years is: %.2f", name, pricipal, rate, period, years, s, years, A);
+    printf("Hi, %s.\nThe compound interest for a prinsipal of %lf at a rate of %lf%%  compounded %d times a year for %d years is:%2f. \nTotal amount after %d years is: %2f", name, pricipal, rate, period, years, s, years, A);
     return 0;
 }
