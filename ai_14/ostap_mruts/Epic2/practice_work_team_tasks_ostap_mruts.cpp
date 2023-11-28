@@ -25,5 +25,15 @@ int main() {
         std::cout << "Можна пограти в більярд вдома.\n";
     }
 
+    char i = weather[0];
+
+    switch (i) {
+        case 's':
+        if (weather == "sunny"){
+
+            std::cout << "It's okey to go outside without umbrella";
+        }
+    }
+
     return 0;
 }
