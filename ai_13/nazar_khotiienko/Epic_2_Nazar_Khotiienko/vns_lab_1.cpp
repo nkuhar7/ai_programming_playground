@@ -9,9 +9,9 @@ int main()
     cout << ("Введіть a i b з значенням double\n");
     cin >> a >> b;
 
-    double c = pow(a, 3) + pow(b, 3);
+    double c = pow(a + b, 3);
     double d = pow(a, 3);
-    double e = 3 * a * pow(b, 2) + 3 * a * pow(b, 3);
+    double e = 3 * a * pow(b, 2) + pow(b, 3)+ 3 * pow(a, 2)*b;
     double g = c - d;
     double z = g / e;
 
@@ -23,9 +23,9 @@ int main()
     cout << ("Введіть a i b з значенням float \n");
     cin >> a1 >> b1;
 
-    float c1 = pow(a1, 3) + pow(b1, 3);
+    float c1 = pow(a1 + b1, 3);
     float d1 = pow(a1, 3);
-    float e1 = 3 * a1 * pow(b1, 2) + 3 * a * pow(b1, 3);
+    float e1 = 3 * a1 * pow(b1, 2) + pow(b1, 3)+ 3 * pow(a1, 2)*b1;
     float g1 = c1 - d1;
     float z1 = g1 / e1;
 
