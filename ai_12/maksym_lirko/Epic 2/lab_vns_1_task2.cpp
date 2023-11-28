@@ -10,10 +10,10 @@ int main()
     int num1 = n---m;
     cout << "n --- m = " << num1 << endl;
     
-    int num2 =(m--<n);
+    int num2 =m--<n;
     cout<<"m--n<n = "<<num2<<endl;
     
-    int num3=(n++>m);
+    int num3=n++>m;
     cout<<"n++>m = "<<num3<<endl;
     
 
