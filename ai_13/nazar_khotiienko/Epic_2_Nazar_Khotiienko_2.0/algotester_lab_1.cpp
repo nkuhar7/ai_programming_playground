@@ -15,15 +15,15 @@ int main()
 
     if (H - h1 - h2 - h3 == 0 or M - m1 - m2 - m3 == 0) // Перевірка додатньої суми
     {
-        cout << "Game Over\n";
+        cout << "NO\n";
     }
-    else if ((h1 and m1) or (h2 and m2) or (h3 and m3)) // Перевірка 2 чисел ((h1 > 0 and m1 > 0) or (h2 > 0 and m2 > 0) or (h3 > 0 and m3 > 0)) 
+    else if ((h1 > 0 and m1 > 0) or (h2 > 0 and m2 > 0) or (h3 > 0 and m3 > 0)) //Перевірка 2 чисел
    {
-        cout << "Game Over\n";
+        cout << "NO\n";
     }
     else
     {
-        cout << "You'r Win\n";
+        cout << "YES\n";
     }
 
     return (0);
