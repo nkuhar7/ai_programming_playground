@@ -27,7 +27,7 @@ if (a < q1 or b < q2 or c < q3 or d < q4)
     {
         cout << "NO";
     }
-    else if (max(max(a - q1, b), max(c, d)) >= 2 * min(min(b, c), min(a - q1, d))) //виконання умови max >= 2 min
+    else if (max(max(a - q1, b), max(c, d)) >= 2 * min(min(b, c), min(a - q1, d)))
     {
         cout << "NO";
     }
