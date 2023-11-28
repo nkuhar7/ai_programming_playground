@@ -20,7 +20,6 @@ int main(){
             result += an;
             sum += result;
         }
-        cout <<"X: "<< x <<"\t" << "Sum: " << sum <<"\t"<< "n: 10"<< endl;
         
         result_a = 1.0;
         sum_a = 1.0;
@@ -31,7 +30,7 @@ int main(){
             sum_a += result_a;
         }
         double y = cos(x);
-        cout << "With determined accuracy: x = "<< x <<"\t" << "Sum: " << sum_a <<"\t"<< "Accuracy = " << accuracy << "\t" << "Cos(x) = "<< y <<  endl;
+        cout <<"X: "<< x <<"\t SN: " << sum <<"\t SE: "<< sum_a << "\t Y: " << y << endl;
     }
     
     return 0;
