@@ -10,11 +10,9 @@ int main() {
     cin >> input;
     int count_of_banknotes = 0;
 
-    // size_t is platform-dependent integer
     for (int i = cash.size(); i >= 0; i--) {
         if (input < cash[i]) continue;
 
-        // if ints are divided, only integer part is retrieved
         int current_banknotes = input / cash[i];
         count_of_banknotes += current_banknotes;
 
