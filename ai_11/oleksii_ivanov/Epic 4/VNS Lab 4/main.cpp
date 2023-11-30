@@ -3,7 +3,9 @@
 using namespace std;
 
 void print_from_k(int* ring, int size, int k);
-void ring_without_even(int** ring, int* size); // This procedure MUTATES the state of ring and its size
+
+// This procedure MUTATES the state of ring and its size
+void ring_without_even(int** ring, int* size); 
 
 int main() {
     int n, k;
@@ -26,11 +28,13 @@ int main() {
     return 0;
 }
 
-void print_from_k(int* ring, int size, int k){
-    if (k < 0 || k >= size) {
+void print_from_k(int* ring, int size, int k) {
+    if (k < 0) {
         cout << "Error: k is out of range" << endl;
         return;
     }
+
+    k %= size;
 
     for (int i = k; i < size; ++i) cout << ring[i] << " ";
     for (int i = 0; i < k; ++i) cout << ring[i] << " ";
