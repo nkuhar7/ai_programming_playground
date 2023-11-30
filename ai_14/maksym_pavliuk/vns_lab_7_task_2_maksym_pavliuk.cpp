@@ -23,15 +23,16 @@ int main(){
     int a,b,choice;
     float c;
     cout << "what way would you like to convert(1-Dec->frac; 2-Frac->dec)";
+    cin >> choice;
     if(choice==1){
         cout << "\nInput the dec fraction: ";
         cin >> c;
         convert(c);
     }else if(choice==2){
         cout << "\nInput the the numerator and the denominator: ";
-        cin >> a >> b;
-        cin.ignore(' ', 1);
-        convert(a,b);
+        cin >> a;
+        cin >> b;
+        cout << "\n" << convert(a,b);
     }else{
         cout << "\nInvalid choice";
     }
