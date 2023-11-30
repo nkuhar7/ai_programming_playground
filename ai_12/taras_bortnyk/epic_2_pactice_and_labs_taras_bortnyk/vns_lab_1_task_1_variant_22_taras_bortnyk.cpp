@@ -1,17 +1,14 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-
 int main() {
-    double n, m;
-    cout << "Print number for m" << endl;
-    cin >> m;
-    cout << "Print number for n" << endl;
-    cin >> n;
+  float a = 100.0;
+  float b = 0.001;
+  float numerator = pow(a - b, 4) - (pow(a, 4) - 4 * pow(a, 3) * b);
+  float denominator = 6 * pow(a, 2) * pow(b, 2) - 4 * a * pow(b, 3) + pow(b, 4);
+  float result = numerator / denominator;
 
-    cout << "Result of the first expression: " << ((++n) * (++m)) << endl;
-    cout << "Result of the second expression: " << boolalpha << ((m++) < (n)) << endl;
-    cout << "Result of the third expression: " << boolalpha << ((n++) > (m)) << endl;
+  cout << "result is: " << result << endl;
 
-    return 0;
+  return 0;
 }

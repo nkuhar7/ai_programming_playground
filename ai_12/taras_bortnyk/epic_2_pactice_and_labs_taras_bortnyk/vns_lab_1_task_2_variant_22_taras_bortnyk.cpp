@@ -1,16 +1,18 @@
 #include <iostream>
 #include <cmath>
-
 using namespace std;
 
 int main() {
-  float n = 1.0f, sum = 0.0f;
-  do {
-    sum += n;
-    n++;
-  } while (n <= 10);
+    double n, m;
+    cout << "Print number for m" << endl;
+    cin >> m;
+    cout << "Print number for n" << endl;
+    cin >> n;
 
-  cout << "The sum of the elements from 1 to 10 is equal to: " << sum << endl;
+    cout << "Result of the first expression: " << ((++n) * (++m)) << endl;
+    cout << "Result of the second expression: " << boolalpha << ((m++) < (n)) << endl;
+    cout << "Result of the third expression: " << boolalpha << ((n++) > (m)) << endl;
 
-  return 0;
+    return 0;
 }
+
