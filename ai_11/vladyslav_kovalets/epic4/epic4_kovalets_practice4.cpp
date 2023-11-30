@@ -22,7 +22,8 @@ bool isPalindrome(const string& str)
     return isPalindrome(str, 0, str.length() - 1);
 }
 
-int main() {
+int main() 
+{
     cout << "Enter a word or number to check if it's a palindrome:" << endl;
 
     string input;
