@@ -6,8 +6,8 @@ int days(int a, ...) {
     va_list args;
     va_start(args, a);
 
-    const char* number_1 = va_arg(args, const char*);
-    const char* number_2 = va_arg(args, const char*);
+     char* number_1 = va_arg(args,  char*);
+     char* number_2 = va_arg(args,  char*);
 
         int year = number_1[6] * 10 + number_1[7];
         int year1 = number_2[6] * 10 + number_2[7];
