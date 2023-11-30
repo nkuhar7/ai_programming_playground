@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cmath>
-#include <iomanip>
 using namespace std;
 
 double function(double x)
@@ -17,7 +16,7 @@ int main()
     double epsilon = 0.0001;
     double step = (b - a) / k; // Розрахунок кроку
 
-    cout << fixed << setprecision(5); // Встановлення формату виведення
+    
 
     // Цикл для зміни параметра x
     for (double x = a; x <= b; x += step)
@@ -40,7 +39,7 @@ int main()
 
         i = 1;
         // Цикл для обчислення суми за заданою точністю epsilon
-        while (fabs(ae) >= epsilon)
+        while (ae >= epsilon)
         {
             ae *= (2 * i + 1) * pow(x, 2) / (i * (i + 1)); // Обчислення кожного члена ряду
             se += ae;
