@@ -3,11 +3,11 @@
 
 int main()
 {
-    float a = 1000;
-    float b = 0.0001;
-    float x = pow(a+b,2) , y = pow(a, 2) + 2*a*b , z = pow(b, 2) , R;
+    long double a = 1000;
+    long double b = 0.0001;
+    long double x = pow(a+b,2.0) , y = pow(a, 2.0) + 2*a*b , z = pow(b, 2.0) , R;
 
-    R = (x-y)/z;
+     R = (x-y)/z;
 
     std::cout << "Результат: " << R << std::endl;
 
