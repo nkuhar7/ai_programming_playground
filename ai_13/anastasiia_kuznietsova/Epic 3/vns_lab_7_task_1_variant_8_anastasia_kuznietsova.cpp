@@ -1,23 +1,20 @@
 #include <iostream>
-#include <cstdarg>
 using namespace std;
 
-int max_value(int k, ...) 
+int max_value(int n, int k ...) 
 {
-    va_list numbers;
-    va_start(numbers, k);
+    int* p = &k; 
+    int max = *p;
 
-    int max = va_arg(numbers, int);
-    for (int i=1; i<k; i++) 
+    for (int i = 0; i<n; i++) 
     {
-        int value = va_arg(numbers, int);
-        if (value>max) 
+        int value = *(p + i);
+        if (value > max) 
         {
             max = value;
         }
+        *(++p);
     }
-
-    va_end(numbers);
 
     return max;
 }
