@@ -13,7 +13,7 @@ int main()
     cout << "--m-++n: " << a << endl;
     int b = m * n < n++;
     cout << "m*n<n++:  " << b << endl;
-    int c = n-- > m++;
+    int c = n--> m++;
     cout << "n-->m++: " << c << endl;
 
     return 0;
