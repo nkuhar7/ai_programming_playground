@@ -18,16 +18,17 @@ double func_for_sum(int n, double x){
 int main(){
     double y;
     for(double x =0.10; x<=0.80; x+=0.0045){
-        cout << "x =" << x << " " << endl;
+        cout << "x =" << x << " ";
         cout << "sn = ";
         for(int i = 1; i <= 35; i++){
         double sum = func_for_sum(i, x);
-        printf("%0.4f\n", sum);
+        printf("%0.4f", sum);
         break;
         }
-        cout << "y = ";
+        cout << " " << "y = ";
         y = func_for_y(x);
-        printf("%0.4f\n", y);
+        printf("%0.4f", y);
+        cout << endl;
     }
     return 0;
 }

@@ -30,13 +30,16 @@ int main(){
    vector<int> result2 =  decToOct(5, 24, 65, 78, 25, 21);
    vector<int> result3 =  decToOct(8, 34, 75, 58, 45, 91, 11, 56, 17);
     for (int octal : result1) {
-        std::cout << octal << std::endl;
+        std::cout << octal << " ";
     }
+    std::cout << endl;
     for (int octal : result2) {
-            std::cout << octal << std::endl;
+            std::cout << octal << " ";
         }
+    std::cout << endl;
     for (int octal : result3) {
-        std::cout << octal << std::endl;
+        std::cout << octal << " ";
     }
+    std::cout << endl;
     return 0;
 }
