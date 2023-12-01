@@ -1,4 +1,4 @@
-// чат джпт ше треба вивчити
+
 
 #include <iostream>
 #include <vector>
@@ -23,7 +23,7 @@ int main() {
         switch (choice) {
             case '1': // Перерахувати всі книги
                 cout << "list all books" << endl;
-                for (const auto& title : book) { //auto - це ключове слово, яке вказує компілятору визначити тип даних змінної автоматично, в залежності від типу елементів у book.
+                for (const auto& title : book) { 
                     cout << title << endl;
                 }
                 break;
@@ -31,7 +31,7 @@ int main() {
                 cout << "Choose a book by number: " << endl;
                 for (int i = 0; i < book.size(); ++i) {
                     cout << i + 1 << ". " << book[i] << " - ";
-                    cout << (availability[i] ? "available" : "unavailable") << endl;  //условие ? значение_если_истина : значение_если_ложь
+                    cout << (availability[i] ? "available" : "unavailable") << endl;  
                 }
                 int bookNumber;
                 cout << "book number: ";
@@ -61,7 +61,7 @@ int main() {
                 cin >> bookNumber;
 
                 if (bookNumber >= 1 && bookNumber <= book.size()) {
-                    if (!availability[bookNumber - 1]) {     //bookNumber - 1, оскільки вектори індексуються з 0).
+                    if (!availability[bookNumber - 1]) {     
                         availability[bookNumber - 1] = true;
                         cout << "you returned a book '" << book[bookNumber - 1] << "'" << endl;
                     } else {
@@ -84,4 +84,5 @@ int main() {
     } while (choice != '4');
 
     return 0;
+
 }
