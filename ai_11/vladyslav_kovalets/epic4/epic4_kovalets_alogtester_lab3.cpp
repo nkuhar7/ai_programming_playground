@@ -5,8 +5,8 @@ using namespace std;
 int main()
 {
     char list[100000];
-    scanf("%s", list);
-    int length = strlen(list);
+    scanf_s("%s", list);
+    int length = strlen(list);//розмір ліста
     
     char temp = list[0];
     int count = 1;
