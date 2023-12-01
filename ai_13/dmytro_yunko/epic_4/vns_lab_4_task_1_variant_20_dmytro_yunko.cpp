@@ -116,7 +116,7 @@ struct Node
                 cout << temp->value << " "; 
                 temp = temp->next; 
             }
-           
+            // cout << temp->value<<" "<<temp -> previous->value;
             cout << endl;
         }
 

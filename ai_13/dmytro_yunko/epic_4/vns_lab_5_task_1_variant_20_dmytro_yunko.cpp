@@ -106,7 +106,7 @@ int main(int argc, char const *argv[])
     cin>> jlength;
     cin>> klength;
 
-    int *array = new int[jlength * klength];
+    int array[jlength * klength];
     for (size_t j = 0; j < jlength; j++)
     {
         cout<< "enter "<<j+1 <<" array";
