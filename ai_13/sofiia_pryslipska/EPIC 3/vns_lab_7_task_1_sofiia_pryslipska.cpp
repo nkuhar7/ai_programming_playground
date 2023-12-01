@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstdarg>
+#include <cstdarg> //для роботи зі змінною кількістю аргументів
 
 using namespace std;
 
