@@ -9,7 +9,6 @@ int main() {
     cout << "Введіть погоду ( sunny, rainy, cloudy, frosty, windy): ";
     cin >> weather;
 
-    // Перевірка, чи потрібно взяти куртку
     if (weather == "rainy" || weather == "frosty") {
         cout << "Вам слід одягнути куртку!" << endl;
     } else {
