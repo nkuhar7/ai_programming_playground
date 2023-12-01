@@ -15,14 +15,15 @@ int main() {
     }
     int similar=0;
     int unique=N+M;
-    for(int i=0; i<M; ++i) {
-        for(int j=0; j<N; ++j) {
+    for(int i=0; i<N; ++i) {
+        for(int j=0; j<M; ++j) {
             if(a[i] == b[j]) {
                 similar++;
                 unique--;
             }
         }
     }
+    
     cout << similar << endl;
     cout << unique << endl;
 }

@@ -46,7 +46,7 @@ int main() {
         }
     }
 
-   /* for (int i=0; i<rowNum; ++i){
+    for (int i=0; i<rowNum; ++i){
         for (int j=0; j<columnNum; ++j) {
             int interim = matrix[i][j];
             int minRow = interim;
@@ -68,6 +68,7 @@ int main() {
                 cout << "Saddle point: " << "(" << i << ", " << j << ")" << endl;
             }
         }
-    }  */
+    } 
 
+    return 0; 
 }
