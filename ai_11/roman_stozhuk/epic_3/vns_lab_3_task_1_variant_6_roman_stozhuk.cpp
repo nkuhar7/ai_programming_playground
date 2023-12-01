@@ -10,19 +10,19 @@ int main() {
     while(x <= 1) {
         std::cout << "X=" << std::setw(10) << std::left << x;
 
-        double sn = 1 + cos(PI_4) * x, pan = x;
-        //an = pan * cos*;
-        for(short i = 2; i <= n; i++) {
-            pan *= x/n;
-            sn += cos(n*PI_4) * pan;
+        double sn = 1, pan = 1;
+        for(short i = 1; i <= n; i++) {
+            pan *= x/i;
+            sn += cos(i*PI_4) * pan;
         }
         std::cout << "SN=" << std::setprecision(9) << std::setw(16) << std::left << sn;
 
-        double se = 1 + cos(PI_4) * x, pae = x, i = 2, ae;
+        double se = 1, pae = 1, i = 1, ae;
         do {
-            pae *= x/n;
-            ae = pae * cos(n*PI_4);
+            pae *= x/i;
+            ae = pae * cos(i*PI_4);
             se += ae;
+            ++i;
         } while (ae > e);
         std::cout << "SE=" << std::setw(16) << std::left << se;
 
