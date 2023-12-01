@@ -14,7 +14,7 @@ for(int i = 0;i<a ;i++){
     number.push_back(elements);
 }
 for(auto n = number.begin();n != number.end();){
-    if(*n % 2 !=0){
+    if(*n % 2 ==0){
        n = number.erase(n);
     }
     else{n++;}
