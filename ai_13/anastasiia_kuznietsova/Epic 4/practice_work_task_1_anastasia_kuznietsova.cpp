@@ -5,7 +5,7 @@ using namespace std;
 bool isPalindrome(string& str, int start, int end)
 {
     if (start>end)
-        return 0;
+        return false;
     if (start==end)
         return true;
 
