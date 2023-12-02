@@ -1,4 +1,4 @@
-// працює
+
 
 #include <iostream>
 #include <vector>

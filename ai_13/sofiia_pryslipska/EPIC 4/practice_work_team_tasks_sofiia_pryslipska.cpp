@@ -1,4 +1,4 @@
-//чат джпт працює але перечитати і вивчити
+
 
 #include <iostream>
 #include <string>

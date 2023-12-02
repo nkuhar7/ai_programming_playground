@@ -1,5 +1,5 @@
 
-// працює
+
 
 #include <iostream>
 using namespace std;
