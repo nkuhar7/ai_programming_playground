@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
-int FindNegativeNum(int nums[], int length)
+int Count(int nums[], int length)
 {
     int output = 0;
     for(int i = 0; i < length; i++)
@@ -11,17 +11,7 @@ int FindNegativeNum(int nums[], int length)
     }
     return output;
 }
-int FindNegativeNum(double nums[], int length)
-{
-    int output = 0;
-    for(int i = 0; i < length; i++)
-    {
-        if(nums[i] < 0)
-            output++;
-    }
-    return output;
-}
-void FindLatters(string str)
+void Count(string str)
 {
     str += ' ';
     int result = 0;
@@ -47,10 +37,10 @@ int main()
 {
     int arr[] = {1, 5, -4, 6, -9, -5, -2},
         length = sizeof(arr) / sizeof(arr[0]);
-    int result = FindNegativeNum(arr, length);
+    int result = Count(arr, length);
     cout << "amount of negative numbers: " << result << endl;
     string str = "   sdsds fkwe f q  sddfsm";
-    FindLatters(str);
+    Count(str);
     return 0;
 }
 
