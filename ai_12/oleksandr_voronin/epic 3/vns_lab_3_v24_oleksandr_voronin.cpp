@@ -11,13 +11,13 @@ double Y(double x)
 
 double SN(double x, double n) {
     
-    double current = pow(-1,n) * pow(1+x,2 * n)/n;
+    double formul = pow(-1,n) * pow(1+x,2 * n)/n;
     double sum =0;
 
     for (int n = 1; n <= 40; n++) 
     {
-        current = pow(-1,n) * pow(1+x,2 * n)/n;
-        sum += current;
+        formul = pow(-1,n) * pow(1+x,2 * n)/n;
+        sum += formul;
     }
 
     return sum;
@@ -41,7 +41,7 @@ int main() {
     double a = -2.0;
     double b = -0.1;
     double eps = 0.0001;
-    double x = a;
+    double x = -2.0;
     while (x <= b) {
         cout << "  X = " << x << "   SN = " << SN(x,n) << "  SE = " << SE(x,eps) << "  Y = " << Y(x) << endl;
 
