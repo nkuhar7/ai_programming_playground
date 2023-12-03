@@ -40,12 +40,12 @@ int main() {
     int n;
     double a = -2.0;
     double b = -0.1;
+    double step = -0.19;
     double eps = 0.0001;
     double x = -2.0;
     while (x <= b) {
         cout << "  X = " << x << "   SN = " << SN(x,n) << "  SE = " << SE(x,eps) << "  Y = " << Y(x) << endl;
-
-        x += (b - a) / 10;
+        x += step;
     }
     
 }
