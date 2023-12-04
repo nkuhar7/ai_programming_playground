@@ -2,8 +2,7 @@
 #include<cmath>
 using namespace std;
 int main(){
-    double fn = 1, f2n = 1;
-    double sum = 0, e = 0.0001;
+    double fn = 1, f2n = 1, sum = 0, e = 0.0001;
     int n, k;
     cin >> n;
     //cin >> e;
