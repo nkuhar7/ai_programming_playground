@@ -6,7 +6,7 @@ int main(){
 
     cout<<"Kuzo Ivan"<<endl;
 
-    cout<< "Melnykov Dmytro\n";
+
 
 
 
