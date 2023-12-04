@@ -21,11 +21,11 @@ int main()
         if(!(searchVowels(token)))
         {
             cout << token << " ";
-        }
-        if(token[strlen(token)-1] == '.')
-        {
-            printf("\b \b");
-            printf("\b \b");
+            if(token[strlen(token)-1] == '.')
+            {
+                printf("\b \b");
+                printf("\b \b");
+            }
         }
         token = strtok(NULL, " ");
     }
