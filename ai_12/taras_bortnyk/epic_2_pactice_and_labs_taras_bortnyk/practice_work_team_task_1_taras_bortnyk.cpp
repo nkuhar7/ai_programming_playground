@@ -1,57 +1,55 @@
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 int main() {
     string weather;
-    cout << "Please provide the current weather condition: ";
+
+    cout << "Enter the weather (sunny, rainy, cloudy, frosty, windy): ";
     cin >> weather;
 
-    if (weather == "snowy" || weather == "rainy") {
-        cout << "It might be a good idea to wear a jacket.\n";
+    if (weather == "rainy" || weather == "frosty") {
+        cout << "You should wear a jacket!" << endl;
     } else {
-        cout << "No need for a jacket.\n";
+        cout << "You don't need a jacket today." << endl;
     }
 
-   switch (weather[0]) {
-    case 's':
-        cout << "Perfect weather for a picnic!\n";
-        break;
-    case 'r':
-        cout << "Ideal conditions for reading a book indoors!\n";
-        break;
-    case 'c':
-        cout << "Maybe visit a museum?\n";
-        break;
-    case 'sn':
-        cout << "How about creating a snowman?\n";
-        break;
-    case 'w':
-        cout << "Fly a kite if you have one!\n";
-        break;
-    default:
-        cout << "Please enter a valid weather condition.\n";
-}
+    if (weather == "sunny") {
+        cout << "Perfect day for a picnic!!" << endl;
+    } else if (weather == "rainy") {
+        cout << "Ideal weather to read a book indoors!" << endl;
+    } else if (weather == "cloudy") {
+        cout << "Maybe visit a museum??" << endl;
+    } else if (weather == "frosty") {
+        cout << "How about building a snowman?" << endl;
+    } else if (weather == "windy") {
+        cout << "Fly a kite if you have one!" << endl;
+    } else {
+        cout << "Enter the correct weather." << endl;
+        return 1; 
+    }
 
-
-    switch (weather[0]) {
+    cout << "Footwear recommendations: ";
+    switch(weather[0]) {
         case 's':
-            cout << "Put on your favorite sneakers!\n";
+            cout << "Put on your favorite sneakers!";
             break;
         case 'r':
-            cout << "Rain boots would be a good choice!\n";
+            cout << "Rain boots are a great idea!";
             break;
         case 'c':
-            cout << "Any footwear suits today.\n";
+            cout << "Any footwear will do.";
             break;
-        case 'sn':
-            cout << "Snow boots will keep your feet warm!\n";
+        case 'f':
+            cout << "Snow boots will keep your feet warm!";
             break;
         case 'w':
-            cout << "Consider wearing something sturdy!\n";
+            cout << "Choose something sturdy!";
             break;
         default:
-            cout << "Please enter a valid weather condition.\n";
+            cout << "We cannot advise on suitable footwear.";
+            break;
     }
 
     return 0;
