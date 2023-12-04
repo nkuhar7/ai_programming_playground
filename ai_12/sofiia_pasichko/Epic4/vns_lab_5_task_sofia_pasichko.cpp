@@ -41,7 +41,7 @@ int main() {
         {2, 2, 2, 2}
     };
 
-    if (doesColumnExist(matrix, 3, 3)==true) {
+    if (doesColumnExist(matrix, 4, 4)==true) {
         cout << "YES" << endl;
     } else {
         cout << "NO" << endl;
