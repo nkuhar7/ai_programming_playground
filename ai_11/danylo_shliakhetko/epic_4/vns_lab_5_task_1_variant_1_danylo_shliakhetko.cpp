@@ -4,18 +4,11 @@ using namespace std;
 
 void deleteRowFromMatrix(int **matrix, int n, int m, int startInd, int endInd);
 
-// const int h = 4, w = 4;
-// int newArr[h][w] = {
-//     {1, 2, 3, 4},
-//     {1, 2, 3, 4},
-//     {1, 2, 3, 4},
-//     {1, 2, 3, 4},
-// };
-
 int main()
 {
     int **arr;
     int n, m;
+    int a, b;
 
     cout << "Enter size of matrix: ";
     cin >> n >> m;
@@ -31,31 +24,51 @@ int main()
             arr[i][j] = input;
         }
     }
+    cout << "Enter rows from a to b: ";
+    cin >> a >> b;
 
-    deleteRowFromMatrix(arr, n, m, 2, 3);
+    cout << "- - - -"
+         << "\n";
 
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            cout << arr[i][j] << " ";
-        }
-        cout<<"\n";
-    }
+    deleteRowFromMatrix(arr, n, m, a, b);
 
     return 0;
 }
 
 void deleteRowFromMatrix(int **arr, int n, int m, int start, int end)
 {
-    if (start >= n || end || start < 0 || end < 0)
-        return;
+    int **newArr;
+    newArr = new int *[n];
 
-    int lastRow = n - 1;
-    for (int i = start; i < end; i++)
+    int index = 0;
+    for (int i = 0; i < n; i++)
+    {
+        newArr[i] = new int[m];
+
+        if (i >= start && i < end)
+        {
+            index++;
+        }
+
+        for (int j = 0; j < m; j++)
+        {
+            if (index > end - start || index + i > n - 1)
+            {
+                newArr[i][j] = 0;
+            }
+            else
+            {
+                newArr[i][j] = arr[index + i][j];
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
-            arr[i][j] = 0;
-        swap(arr[i], arr[lastRow--]);
+        {
+            cout << newArr[i][j] << " ";
+        }
+        cout << "\n";
     }
 }
