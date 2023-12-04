@@ -25,7 +25,7 @@ int main() {
     double amount = principal * pow(1 + (rate / compaunded), compaunded * years);
 
     printf("Hello, %s!\n", name);
-    printf("The compound interest for a principal of %.2lf at a rate of %.2lf%% compounded %d times a year for %d years is: %.2lf\n", principal, rate * 100, compaunded, years, amount - principal);
+    printf("The compound interest for a principal of %.2lf at a rate of %.2lf compounded %d times a year for %d years is: %.2lf\n", principal, rate * 100, compaunded, years, amount - principal);
     printf("The total amount after %.0d years is: %.2lf\n", years, amount);
 
     return 0;
