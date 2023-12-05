@@ -4,7 +4,9 @@
 
 int main()
 {
-    std::vector<std::string> libraryMain = {"Brave New World", "A Clockwork Orange", "To Kill a Mockingbird", "One Flew Over the Cuckoo's Nest", "The Great Gatsby", "The Picture of Dorian Gray", "Fear and Loathing in Las Vegas", "The Catcher in the Rye", "Do Androids Dream of Electric Sheep?", "The Adventures of Huckleberry Finn"};
+    std::vector<std::string> libraryMain = {"Brave New World", "A Clockwork Orange", "To Kill a Mockingbird",
+     "One Flew Over the Cuckoo's Nest", "The Great Gatsby", "The Picture of Dorian Gray", "Fear and Loathing in Las Vegas",
+      "The Catcher in the Rye", "Do Androids Dream of Electric Sheep?", "The Adventures of Huckleberry Finn"};
     std::vector<std::string> borrowedLib;
 
 menu:

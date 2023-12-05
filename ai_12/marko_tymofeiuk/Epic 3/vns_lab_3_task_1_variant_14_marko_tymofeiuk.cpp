@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cmath>
-#include <iomanip>
 
 double a = M_PI/5, b = M_PI;
 int k = 10;
@@ -23,7 +22,7 @@ int main(){
             n++;
             en = pow (-1, n) * (cos(n*x)/pow(n, 2));
         }
-        std::cout << std::fixed << std::setprecision(3) << "X: " << x <<  std::fixed << std::setprecision(6) << "; SN = " << sn << "; SE = " << se << "; Y = " << y << std::endl;
+        std::cout << "X: " << x << "; SN = " << sn << "; SE = " << se << "; Y = " << y << std::endl;
     } 
     return 0;
 }
