@@ -45,16 +45,16 @@ void insertLast(int data)
 
     if (head == NULL)
     {
-        // If the list is empty, make the new node point to itself
+       
         newNode->next = newNode;
         head = newNode;
         end = newNode;
     }
     else
     {
-        end->next = newNode; // Update the reference in the current end node
-        end = newNode;       // Update the end to the new node
-        end->next = head;     // Update the reference in the new end node
+        end->next = newNode; 
+        end = newNode;       
+        end->next = head;   
     }
 }
 
@@ -66,9 +66,9 @@ void insertLast(int data)
             return;
         }
 
-        Node *node = head;//ноде стає вказівником на голову
+        Node *node = head;
 
-        do //тепер видруковуємо від першої ноди і поки знов не буде нодою
+        do 
         {
             cout << node->data << " ";
             node = node->next;
@@ -87,7 +87,7 @@ void insertLast(int data)
 
         Node *firstNode = head;
 
-        for (int i = 0; i < k; ++i) //переміщуємось в к вузол
+        for (int i = 0; i < k; ++i) 
         {
             firstNode = firstNode->next;
             if (firstNode == head)
@@ -97,15 +97,15 @@ void insertLast(int data)
             }
         }
 
-        Node *node = firstNode; // фірстнод це к вузол
+        Node *node = firstNode; 
         do
         {
             cout << node->data << " ";
             node = node->next;
         } while (node != head);
 
-        node = head; // перехід до початку списау
-        while (node != firstNode) // цикл завершується коли нод дійде до вузла на який вказує фірстнод
+        node = head; 
+        while (node != firstNode) 
         {
             cout << node->data << " ";
             node = node->next;
@@ -114,35 +114,35 @@ void insertLast(int data)
         cout << "\n";
     }
 
-    void deleteNode(Node *del) // метод видаляє вказаний вузол del
+    void deleteNode(Node *del) 
     {
-        if (del == head) // перевіряєм чи видаляється голова
+        if (del == head)
         {
-            if (head->next == head) //перевірка чи олова єдиний вузол
+            if (head->next == head) 
             {
-                delete del; //звільнення памяті під цей вузол
-                head = NULL; //порожній, тому встановлюємо в нуль
+                delete del; 
+                head = NULL; 
                 end = NULL;
                 return;
             }
 
-            head = head->next; //зміна голови на наступний вузол
-            end->next = head; //бо список порожній
+            head = head->next; 
+            end->next = head; 
         }
         else
         {
             Node *temp = head;
-            while (temp->next != head && temp->next != del) // шукає вузол перед тим шо видаляється або поки не кінець
+            while (temp->next != head && temp->next != del) 
             {
                 temp = temp->next;
             }
 
-            if (temp->next == head) //перевірка чи дійшли до кінця списку
+            if (temp->next == head) 
             {
                 return;
             }
 
-            temp->next = del->next; //кажем шоб некст (вказує на те саме шо видалений)однаковий був
+            temp->next = del->next; 
 
             if (del == end){
                 end = temp;}
