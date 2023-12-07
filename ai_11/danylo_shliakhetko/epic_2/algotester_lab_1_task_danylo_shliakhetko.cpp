@@ -5,52 +5,71 @@ using namespace std;
 
 int main()
 {
-    vector<int> tableLegs = {};
+    vector<long long> tableLegs = {};
+
     for (int i = 0; i < 4; i++)
     {
-        int tableLeg;
+        long long tableLeg;
         cin >> tableLeg;
         tableLegs.push_back(tableLeg);
     }
 
-    vector<int> tableCuts = {};
+    vector<long long> tableCuts = {};
 
     for (int i = 0; i < 4; i++)
     {
-        int tableCut;
+        long long tableCut;
         cin >> tableCut;
         tableCuts.push_back(tableCut);
     }
 
-    int maxLeg = tableLegs[0];
-    int minLeg = tableLegs[0];
-
-    for (int i = 0; i < tableLegs.size(); i++)
+    for (int i = 0; i < 4; i++)
     {
-        int currentLeg = tableLegs[i] - tableCuts[i];
-        if (currentLeg <= 0)
+        if (tableCuts[i] > tableLegs[i])
         {
             cout << "ERROR";
             return 0;
         }
-        if (maxLeg < currentLeg)
+    }
+
+    long long minLeg = 0;
+    long long maxLeg = 0;
+
+    minLeg = tableLegs[0];
+
+    for (int i = 0; i < 4; i++)
+    {
+
+        tableLegs[i] = tableLegs[i] - tableCuts[i];
+
+        if (minLeg > tableLegs[i])
         {
-            maxLeg = currentLeg;
+            minLeg = tableLegs[i];
         }
-        if (minLeg > currentLeg)
+
+        maxLeg = tableLegs[0];
+
+        for (int j = 0; j < 4; j++)
         {
-            minLeg = currentLeg;
+            if (maxLeg < tableLegs[j])
+            {
+                maxLeg = tableLegs[j];
+            }
+        }
+
+        if (minLeg <= maxLeg / 2)
+        {
+            cout << "NO";
+            return 0;
         }
     }
 
-    if (maxLeg > 2 * minLeg)
-    {
-        cout << "NO";
-    }
-    else
+    if (tableLegs[0] == tableLegs[1] && tableLegs[1] == tableLegs[2] && tableLegs[2] == tableLegs[3] && tableLegs[0] != 0 && minLeg > maxLeg / 2)
     {
         cout << "YES";
     }
-
-    return 0;
+    else
+    {
+        cout << "NO";
+    }
 }
