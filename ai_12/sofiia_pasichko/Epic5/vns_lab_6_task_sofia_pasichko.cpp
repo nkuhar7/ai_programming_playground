@@ -30,7 +30,8 @@ void sortWordsInString(char str[]) {
     free(result); 
 }
 int main() {
-    char s[256] = "688486 645 2112"; 
+    char s[256];
+    gets_s(s, 256);
     sortWordsInString(s);
     printf("\n");
 
