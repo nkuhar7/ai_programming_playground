@@ -5,7 +5,6 @@
 #include <string>
 #include <vector>
 
-using namespace std;
 
 void paintMountain(std::vector<std::vector<int>>& map, int x, int y) {
     if (x < 0 || x > map.size() || y < 0 || y > map[0].size()) {
@@ -48,9 +47,9 @@ int main() {
 
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
-            cout << map[i][j] << " ";
+            std::cout << map[i][j] << " ";
         }
-        cout << endl;
+        std::cout << std::endl;
     }
 
     return 0;
