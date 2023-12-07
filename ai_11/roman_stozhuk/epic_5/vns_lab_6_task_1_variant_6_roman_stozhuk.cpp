@@ -3,7 +3,7 @@
 
 int main() {
     char s[256], pr[256];
-    scanf("%s", s);
+    gets_s(s, 255);
     int letters[52] = {0};
     int abc=0;
     while (s[abc] != '.') {
