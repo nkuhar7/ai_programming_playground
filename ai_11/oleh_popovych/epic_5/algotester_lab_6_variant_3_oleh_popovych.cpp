@@ -11,7 +11,7 @@ struct Pair{
     int y;
 };
 
-std::set<int> getPossibleNumbers(const std::vector<std::vector<int>>&, int, int, int);
+std::set<int> getPossibleNumbers(const std::vector<std::vector<int>>&, int, int);
 
 int main(int argc, char const *argv[])
 {
@@ -41,7 +41,7 @@ int main(int argc, char const *argv[])
 
     for (int i = 0; i < Q; i++) {
         if (grid[coords[i].x][coords[i].y] == 0) {
-            std::set<int> possibleNumbers = getPossibleNumbers(grid, coords[i].x, coords[i].y, N);
+            std::set<int> possibleNumbers = getPossibleNumbers(grid, coords[i].x, coords[i].y);
 
             std::cout << possibleNumbers.size() << std::endl;
             for (int number : possibleNumbers) {
@@ -58,7 +58,7 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
-std::set<int> getPossibleNumbers(const std::vector<std::vector<int>>& grid, int x, int y, int N) {
+std::set<int> getPossibleNumbers(const std::vector<std::vector<int>>& grid, int x, int y) {
     std::set<int> possibleNumbers;
 
 
