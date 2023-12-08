@@ -2,10 +2,9 @@
 // Created by olehio-p on 12/7/2023.
 //
 #include <iostream>
-#include <vector>
 #include <unordered_map>
 #include <set>
-#include <algorithm>
+
 
 int main() {
     int N, K;
