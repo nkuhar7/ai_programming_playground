@@ -6,7 +6,7 @@
 #include <vector>
 
 
-void paintMountain(std::vector<std::vector<int>>, int, int);
+void paintMountain(std::vector<std::vector<int>>&, int, int);
 
 int main() {
     int N, M;
