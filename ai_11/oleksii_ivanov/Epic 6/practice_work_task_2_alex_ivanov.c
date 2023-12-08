@@ -12,13 +12,14 @@ typedef struct BSTNode {
 
 TreeNode* create_bst_root(int value);
 TreeNode* create_node(int value, TreeNode* parent);
+void emplace(TreeNode* root, int value);
 void delete_tree(TreeNode* root);
 // In order traversal printing
 void inorder_print(TreeNode* root);
 // End BST
 
 // Task 4
-TreeNode *create_mirror_flip(TreeNode *node, TreeNode *parent);
+TreeNode *create_mirror_flip(TreeNode *node);
 void Task4(TreeNode *root);
 
 // Task 5
@@ -26,22 +27,10 @@ TreeNode* tree_sum(TreeNode *root); // I made it a safe procedure
 void Task5(TreeNode *root);
 
 int main() {
-    /**
-     *          1
-     *        /   \
-     *       2     3
-     *      /\     /\
-     *     4  5   6  7
-     */
-    TreeNode *root = create_bst_root(1);
-    root->left = create_node(2, root);
-    root->right = create_node(3, root);
-    // Seed left child children
-    root->left->left = create_node(4, root->left);
-    root->left->right = create_node(5, root->left);
-    // Seed right child children
-    root->right->left = create_node(6, root->right);
-    root->right->right = create_node(7, root->right);
+    int values[] = {7, 3, 11, 1, 5, 9, 13, 0, 2, 4, 6, 8, 10, 12, 14}, n = 15;
+
+    TreeNode *root = create_bst_root(values[0]);
+    for (int i = 1; i < n; i++) emplace(root, values[i]);
 
     Task4(root);
     printf("\n");
@@ -58,7 +47,7 @@ void Task4(TreeNode *root) {
     inorder_print(root);
 
     printf("\nMirror tree: ");
-    TreeNode *mirror = create_mirror_flip(root, NULL);
+    TreeNode *mirror = create_mirror_flip(root);
     inorder_print(mirror);
 
     delete_tree(mirror);
@@ -87,6 +76,18 @@ TreeNode* create_node(int value, TreeNode* parent) {
     return node;
 }
 
+void emplace(TreeNode* root, int value) {
+    if (root->value == value) return;
+
+    if (value < root->value) {
+        if (root->left == NULL) root->left = create_node(value, root);
+        else emplace(root->left, value);
+    } else {
+        if (root->right == NULL) root->right = create_node(value, root);
+        else emplace(root->right, value);
+    }
+}
+
 void delete_tree(TreeNode* root) {
     if (root == NULL) return;
 
@@ -103,12 +104,12 @@ void inorder_print(TreeNode* root) {
     inorder_print(root->right);
 }
 
-TreeNode *create_mirror_flip(TreeNode *node, TreeNode *parent) {
+TreeNode *create_mirror_flip(TreeNode *node) {
     if (node == NULL) return NULL;
 
-    TreeNode *mirror = create_node(node->value, parent);
-    mirror->left = create_node(node->right->value, node);
-    mirror->right = create_node(node->left->value, node);
+    TreeNode *mirror = create_node(node->value, node->parent);
+    if (node->right) mirror->left = create_mirror_flip(node->right);
+    if (node->left) mirror->right = create_mirror_flip(node->left);
 
     return mirror;
 }
