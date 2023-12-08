@@ -18,12 +18,12 @@ int main(int argc, char const *argv[])
 int startsWith(char* line, char letter) {
     int counter = 0;
     char* token;
-    token = strtok(line, " ");
+    token = strtok_s(line, " ");
     while(token) {
         if(*token == 'a') {
             counter++;
         }
-        token = strtok(nullptr, " ");
+        token = strtok_s(nullptr, " ");
     }
     return counter;
 }
