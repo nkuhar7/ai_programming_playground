@@ -1,7 +1,7 @@
 #include <iostream>
 
 void printArray(int arr[], int size) {
-    for (int i = 0; i < size; ++i) {
+    for (int i = 0; i < size; i++) {
         std::cout << arr[i] << " ";
     }
     std::cout << std::endl;
@@ -13,7 +13,7 @@ int main() {
     std::cout << "Enter the desired size of the array:" << std::endl;
     size_t realN;
         std::cin >> realN;
-    for (int i = 0; i < realN; ++i) {
+    for (int i = 0; i < realN; i++) {
         array[i] = rand() % 100;
     }
 
@@ -21,7 +21,7 @@ int main() {
     printArray(array, realN);
     std::cout << std::endl;
 
-    for (int i = 0; i < realN / 2; ++i) {
+    for (int i = 0; i < realN / 2; i++) {
         std::swap(array[i], array[realN - i - 1]);
     }
 
@@ -33,7 +33,7 @@ int main() {
         realN--;
     }
 
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < 3; i++) {
         array[i] = array[i + 10] - 2;
     }
 
