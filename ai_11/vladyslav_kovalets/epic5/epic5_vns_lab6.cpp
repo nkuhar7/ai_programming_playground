@@ -12,7 +12,6 @@ int main()
     std::istringstream iss(input); //  клас для створення лінії який можна використовувати для читання з рядка
     std::string token;
 
-    std::cout << "Tokens without vowels in the input: ";
     while (iss >> token) 
     // код який виконується для кожного слова в лінії 'iss'
     {

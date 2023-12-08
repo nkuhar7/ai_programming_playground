@@ -44,14 +44,16 @@ int main()
 {
      // Створення вектора для збереження співробітників
     std::vector<Employee> employees;
+    std::cout << employees.empty() << std::endl;
 
     // Додавання прикладових співробітників
     employees.push_back({"Biden", "Joe", "Simson", "President", 1950,70000.0});
-    employees.push_back({"Son", "Alice", "Marie", "Engineer", 1990, 60000.0});
+    employees.push_back({"Simson", "Alice", "Marie", "Engineer", 1990, 60000.0});
     employees.push_back({"Smit", "Bob", "James", "Analyst", 1986, 60000.0});
 
      // Виведення початкового списку співробітників
     std::cout << "Початковий список співробітників:" << std::endl;
+        std::cout << employees.empty() << std::endl;
     for (const auto &employee : employees) 
     {
         std::cout << employee.lastName << ", " << employee.firstName << " - " << employee.position << std::endl;
