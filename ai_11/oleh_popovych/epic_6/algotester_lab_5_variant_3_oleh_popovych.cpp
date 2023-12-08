@@ -6,31 +6,7 @@
 #include <vector>
 
 
-void paintMountain(std::vector<std::vector<int>>& map, int x, int y) {
-    if (x < 0 || x > map.size() || y < 0 || y > map[0].size()) {
-        return;
-    }
-
-    for (int i = 0; i < map.size(); i++) {
-        for (int j = 0; j < map[i].size(); j++) {
-           map[i][j] = abs(i - (x)) + abs(j - (y));
-        }
-    }
-
-    int maxHeight = 0;
-    for (int i = 0; i < map.size(); i++) {
-        for (int j = 0; j < map[0].size(); j++) {
-            if (maxHeight < map[i][j])
-                maxHeight = map[i][j];
-        }
-    }
-
-    for (int i = 0; i < map.size(); i++) {
-        for (int j = 0; j < map[0].size(); j++) {
-            map[i][j] = abs(map[i][j] - maxHeight);
-        }
-    }
-}
+void paintMountain(std::vector<std::vector<int>>, int, int);
 
 int main() {
     int N, M;
@@ -53,4 +29,30 @@ int main() {
     }
 
     return 0;
+}
+
+void paintMountain(std::vector<std::vector<int>>& map, int x, int y) {
+    if (x < 0 || x > map.size() || y < 0 || y > map[0].size()) {
+        return;
+    }
+
+    for (int i = 0; i < map.size(); i++) {
+        for (int j = 0; j < map[i].size(); j++) {
+            map[i][j] = abs(i - (x)) + abs(j - (y));
+        }
+    }
+
+    int maxHeight = 0;
+    for (int i = 0; i < map.size(); i++) {
+        for (int j = 0; j < map[0].size(); j++) {
+            if (maxHeight < map[i][j])
+                maxHeight = map[i][j];
+        }
+    }
+
+    for (int i = 0; i < map.size(); i++) {
+        for (int j = 0; j < map[0].size(); j++) {
+            map[i][j] = abs(map[i][j] - maxHeight);
+        }
+    }
 }
