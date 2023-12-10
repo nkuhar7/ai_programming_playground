@@ -151,6 +151,10 @@ void insert_k(Node** head, char* value, char* key, int count) {
 
 void printList(Node* head) {
     Node* current = head;
+    if (current == NULL) {
+        printf("List is empty\n");
+        return;
+    }
     while (current != NULL) {
         printf("%s", current->value);
         current = current->next;
