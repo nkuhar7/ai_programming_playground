@@ -15,12 +15,12 @@ protected:
     struct Node {
     public:
         T value;
-        size_t height;
+        int height;
         // Node* parent;
         Node* left;
         Node* right;
 
-        Node(T value, size_t height, Node* left, Node* right)
+        Node(T value, int height, Node* left, Node* right)
                 : value(value), height(height), left(left), right(right) {}
 
         Node()  : height(0), left(nullptr), right(nullptr) {}
@@ -47,26 +47,26 @@ protected:
         return nullptr;
     }
 
-    Node* _append_node(Node* _root, T value) {
-        if (_root == nullptr) {
+    Node* _append_node(Node* node, T value) {
+        if (node == nullptr) {
             _size++;
             return new Node(value);
         }
 
         // traverse the tree to find the right place for the new node
-        if (value < _root->value)
-            _root->left = _append_node(_root->left, value);
-        else if (value > _root->value)
-            _root->right = _append_node(_root->right, value);
+        if (value < node->value)
+            node->left = _append_node(node->left, value);
+        else if (value > node->value)
+            node->right = _append_node(node->right, value);
 
         // Balance the tree
 
         // Update height of the root
-        const int   left_height     = height(_root->left),
-                    right_height    = height(_root->right);
+        const int   left_height     = height(node->left),
+                    right_height    = height(node->right);
         // determine height of root (max of left or right subtree + 1)
         // (because it is the longest path from root to leaf)
-        _root->height = 1 + std::max(left_height, right_height);
+        node->height = 1 + std::max(left_height, right_height);
 
         // determine balance factor
         const int balance_factor = left_height - right_height;
@@ -74,84 +74,84 @@ protected:
         // if balance_factor is greater than 1
         // then tree is left heavy -> right rotation
         if (balance_factor > 1) {
-            if (value < _root->left->value) {
-                return right_rotation(_root);
+            if (value < node->left->value) {
+                return right_rotation(node);
             } else {
                 // left rotation on left subtree (because it is right heavy)
-                _root->left = left_rotation(_root->left);
-                return right_rotation(_root);
+                node->left = left_rotation(node->left);
+                return right_rotation(node);
             }
         }
         // if balance_factor is less than -1
         // then tree is right heavy -> left rotation
         else if (balance_factor < -1) {
-            if (value > _root->right->value) {
-                return left_rotation(_root);
+            if (value > node->right->value) {
+                return left_rotation(node);
             } else {
                 // right rotation on right subtree (because it is left heavy)
-                _root->right = right_rotation(_root->right);
-                return left_rotation(_root);
+                node->right = right_rotation(node->right);
+                return left_rotation(node);
             }
         }
-        return _root;
+        return node;
     }
 
-    Node* _remove_node(Node* _root, T value) {
-        if (_root == nullptr) return nullptr;
+    Node* _remove_node(Node* node, T value) {
+        if (node == nullptr) return nullptr;
 
         // traverse the tree to find the right node
-        if (value < _root->value) {
-            _root->left = _remove_node(_root->left, value);
-        } else if (value > _root->value) {
-            _root->right = _remove_node(_root->right, value);
+        if (value < node->value) {
+            node->left = _remove_node(node->left, value);
+        } else if (value > node->value) {
+            node->right = _remove_node(node->right, value);
         } else /* if reached the value */ {
-            Node *r = _root->right;
-            if (_root->right == nullptr) {
-                Node *l = _root->left;
-                delete _root;
-                _root = l;
-            } else if (_root->left == nullptr) {
-                delete _root;
-                _root = r;
+            Node *r = node->right;
+            if (node->right == nullptr) {
+                Node *l = node->left;
+                delete node;
+                node = l;
+            } else if (node->left == nullptr) {
+                delete node;
+                node = r;
             } else /* if both leaves are present */ {
                 // find the smallest value in the right subtree
                 while (r->left != nullptr) r = r->left;
 
                 // and replace the root with it
-                _root->value = r->value;
-                _root->right = _remove_node(_root->right, r->value);
+                node->value = r->value;
+                node->right = _remove_node(node->right, r->value);
             }
         }
 
-        if (_root == nullptr) return nullptr;
+        if (node == nullptr) return nullptr;
 
         // Balance the tree
 
         // Update height of the root
-        const int   left_height = height(_root->left),
-                    right_height = height(_root->right);
+        const int   left_height = height(node->left),
+                    right_height = height(node->right);
         // determine height of root (max of left or right subtree + 1)
         // (because it is the longest path from root to leaf)
-        _root->height = 1 + std::max(left_height, right_height);
+        node->height = 1 + std::max(left_height, right_height);
 
         // determine balance factor
         const int balance_factor = left_height - right_height;
         if (balance_factor > 1) {
-            if (height(_root->left) >= height(_root->right))
-                return right_rotation(_root);
+            if (height(node->left) >= height(node->right))
+                return right_rotation(node);
             else {
-                _root->left = left_rotation(_root->left);
-                return right_rotation(_root);
+                node->left = left_rotation(node->left);
+                return right_rotation(node);
             }
         } else if (balance_factor < -1) {
-            if (height(_root->right) >= height(_root->left))
-                return left_rotation(_root);
+            if (height(node->right) >= height(node->left))
+                return left_rotation(node);
             else {
-                _root->right = right_rotation(_root->right);
-                return left_rotation(_root);
+                node->right = right_rotation(node->right);
+                return left_rotation(node);
             }
         }
-        return _root;
+        return node;
     }
 
     static size_t height(const Node* node) {
