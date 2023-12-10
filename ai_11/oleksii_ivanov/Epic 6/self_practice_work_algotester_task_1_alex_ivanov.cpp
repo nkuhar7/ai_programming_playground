@@ -1,6 +1,5 @@
 #include <iostream>
 #include <functional>
-#include <list>
 
 // Algotester Lab 7-8 V1
 // Doubly linked list
@@ -12,8 +11,8 @@ protected:
     struct Node {
     public:
         T value;
-        struct Node* next;
-        struct Node* prev;
+        Node* next;
+        Node* prev;
 
         Node() : next(nullptr), prev(nullptr) {}
 
@@ -24,10 +23,10 @@ protected:
             : Node(value, nullptr, nullptr) {}
     };
 
-    Node* get_node(int index) {
+    Node* get_node(const int index) {
         check_index(index);
 
-        int mid = _size / 2;
+        const int mid = _size / 2;
         Node* node;
 
         if (index <= mid) {
@@ -45,7 +44,7 @@ protected:
         return node;
     }
 
-    void check_index(int index) {
+    void check_index(const int index) const {
         if (index < 0 || index > _size) {
             throw std::out_of_range("Index out of range");
         }
@@ -79,11 +78,13 @@ public:
         _size = 0;
     }
 
-    int size() {
+    // Nodiscard is used to warn the user if the return value is ignored
+    // (Function is useless if we just call it)
+    [[nodiscard]] int size() const {
         return _size;
     }
 
-    bool empty() {
+    [[nodiscard]] bool empty() const {
         return _size == 0;
     }
 
@@ -124,7 +125,7 @@ public:
         _size++;
     }
 
-    void insert(T value, int index) {
+    void insert(T value, const int index) {
         check_index(index);
 
         if (index == 0) {
@@ -147,7 +148,7 @@ public:
     void pop_front() {
         if (head == nullptr) return;
 
-        Node* node = head;
+        const Node* node = head;
         head = head->next;
         delete node;
         _size--;
@@ -159,7 +160,7 @@ public:
     void pop_back() {
         if (tail == nullptr) return;
 
-        Node* node = tail;
+        const Node* node = tail;
         tail = tail->prev;
         delete node;
         _size--;
@@ -168,7 +169,7 @@ public:
         else tail->next = nullptr;
     }
 
-    void erase(int index) {
+    void erase(const int index) {
         check_index(index);
 
         if (index == 0) {
@@ -200,7 +201,7 @@ public:
         }
     }
 
-    T& operator[](int index) {
+    T& operator[](const int index) {
         return get_node(index)->value;
     }
 };
@@ -258,10 +259,9 @@ int main() {
                 cout << list << endl;
             }
         }
-        catch (out_of_range& e) {}
-        catch (exception& e) {}
+        catch (out_of_range&) {}
+        catch (exception&) {}
     }
 
     return 0;
 }
-

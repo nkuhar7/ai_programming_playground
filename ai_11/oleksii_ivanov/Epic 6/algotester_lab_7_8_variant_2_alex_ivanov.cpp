@@ -8,33 +8,40 @@
 template<class T>
 class Vector {
 private:
-    static const int DEFAULT_CAPACITY = 1;
-    static const int GROWTH_FACTOR = 2;
+    static constexpr int DEFAULT_CAPACITY = 1;
+    static constexpr int GROWTH_FACTOR = 2;
 
     T* data;
     int _size;
     int _capacity;
 
     void check_capacity() {
-        if (_size == _capacity) {
+        if (_size == _capacity)
             resize(_capacity * GROWTH_FACTOR);
-        }
     }
 
-    void check_index(int index) {
-        if (index < 0 || index > _size) {
+    void check_index(const int index) const {
+        if (index < 0 || index > _size)
             throw std::out_of_range("Index out of range");
-        }
     }
 
 public:
-    explicit Vector(int capacity) {
+    explicit Vector(const int capacity) {
         data = new T[capacity];
         _size = 0;
         _capacity = capacity;
     }
 
     Vector() : Vector(DEFAULT_CAPACITY) {}
+
+    // If we use this ctor, it'll disable IDE warnings
+    // (CLion is not that smart tho)
+    
+    // Vector() {
+    //     data = new T[DEFAULT_CAPACITY];
+    //     _size = 0;
+    //     _capacity = DEFAULT_CAPACITY;
+    // }
 
     Vector(std::initializer_list<T> list)
             : Vector(list.size()) {
@@ -48,7 +55,7 @@ public:
         delete[] data;
     }
 
-    void resize(int new_capacity) {
+    void resize(const int new_capacity) {
         T* new_data = new T[new_capacity];
         for (int i = 0; i < _size; i++) {
             new_data[i] = data[i];
@@ -75,19 +82,21 @@ public:
         insert(value, _size);
     }
 
-    int size() {
+    // Nodiscard is used to warn the user if the return value is ignored
+    // (Function is useless if we just call it)
+    [[nodiscard]] int size() const {
         return _size;
     }
 
-    bool empty() {
+    [[nodiscard]] bool empty() const {
         return _size == 0;
     }
 
-    int capacity() {
+    [[nodiscard]] int capacity() const {
         return _capacity;
     }
 
-    void remove(int index) {
+    void remove(const int index) {
         check_index(index);
         for (int i = index; i < _size - 1; i++) {
             data[i] = data[i + 1];
@@ -164,7 +173,7 @@ int main() {
             }
         }
         // ignore out of range exceptions
-        catch (out_of_range& e) {}
-        catch (exception& e) {}
+        catch (out_of_range&) {}
+        catch (exception&) {}
     }
 }

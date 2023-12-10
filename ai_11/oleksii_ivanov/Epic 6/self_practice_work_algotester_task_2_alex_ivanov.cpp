@@ -62,14 +62,14 @@ protected:
         // Balance the tree
 
         // Update height of the root
-        int left_height     = height(_root->left),
-            right_height    = height(_root->right);
+        const int   left_height     = height(_root->left),
+                    right_height    = height(_root->right);
         // determine height of root (max of left or right subtree + 1)
         // (because it is the longest path from root to leaf)
         _root->height = 1 + std::max(left_height, right_height);
 
         // determine balance factor
-        int balance_factor = left_height - right_height;
+        const int balance_factor = left_height - right_height;
 
         // if balance_factor is greater than 1
         // then tree is left heavy -> right rotation
@@ -128,14 +128,14 @@ protected:
         // Balance the tree
 
         // Update height of the root
-        int left_height = height(_root->left),
-            right_height = height(_root->right);
+        const int   left_height = height(_root->left),
+                    right_height = height(_root->right);
         // determine height of root (max of left or right subtree + 1)
         // (because it is the longest path from root to leaf)
         _root->height = 1 + std::max(left_height, right_height);
 
         // determine balance factor
-        int balance_factor = left_height - right_height;
+        const int balance_factor = left_height - right_height;
         if (balance_factor > 1) {
             if (height(_root->left) >= height(_root->right))
                 return right_rotation(_root);
@@ -154,7 +154,7 @@ protected:
         return _root;
     }
 
-    size_t height(Node* node) {
+    static size_t height(const Node* node) {
         return node == nullptr ? 0 : node->height;
     }
 
@@ -230,7 +230,9 @@ public:
         delete_tree(root);
     }
 
-    int size() {
+    // Nodiscard is used to warn the user if the return value is ignored
+    // (Function is useless if we just call it)
+    [[nodiscard]] int size() const {
         return _size;
     }
 
@@ -297,8 +299,8 @@ int main() {
                 tree.remove(element);
             }
         }
-        catch (out_of_range& e) {}
-        catch (exception& e) {}
+        catch (out_of_range&) {}
+        catch (exception&) {}
     }
 
     return 0;
