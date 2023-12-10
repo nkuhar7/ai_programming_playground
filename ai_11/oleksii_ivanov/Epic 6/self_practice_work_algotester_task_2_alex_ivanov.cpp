@@ -2,42 +2,31 @@
 #include <functional>
 
 // Algotester Lab 7-8 V3
-// Binary Search Tree
+// Binary Search Tree (AVL)
+
+// https://www.youtube.com/watch?v=DB1HFCEdLxA
+// https://www.youtube.com/watch?v=JPI-DPizQYk
+// https://www.youtube.com/watch?v=PBkXmhiCP1M
 
 // TODO: Add iterators
 template <class T>
-class BST {
+class AVL {
 protected:
     struct Node {
     public:
         T value;
-        struct Node* parent;
-        struct Node* left;
-        struct Node* right;
+        size_t height;
+        // Node* parent;
+        Node* left;
+        Node* right;
 
-        Node(T value, Node* parent, Node* left, Node* right)
-            : value(value), parent(parent), left(left), right(right) {}
+        Node(T value, size_t height, Node* left, Node* right)
+                : value(value), height(height), left(left), right(right) {}
 
-        Node() : left(nullptr), right(nullptr), parent(nullptr) {}
+        Node()  : height(0), left(nullptr), right(nullptr) {}
 
-        explicit Node(T value)
-            : Node(value, nullptr, nullptr, nullptr) {}
+        explicit Node(T value) : Node(value, 0, nullptr, nullptr) {}
     };
-
-    void emplace(Node* _root, T value) {
-        if (_root == nullptr) return;
-        if (_root->value == value) return;
-
-        if (value < _root->value) {
-            if (_root->left == nullptr)
-                _root->left = new Node(value, _root, nullptr, nullptr);
-            else emplace(_root->left, value);
-        } else {
-            if (_root->right == nullptr)
-                _root->right = new Node(value, _root, nullptr, nullptr);
-            else emplace(_root->right, value);
-        }
-    }
 
     // Helper for finalizer
     void delete_tree(Node* _root) {
@@ -58,60 +47,159 @@ protected:
         return nullptr;
     }
 
-    void append_node(Node* node, Node* _root) {
-        if (node == nullptr) return;
-
+    Node* _append_node(Node* _root, T value) {
         if (_root == nullptr) {
-            root = node;
             _size++;
-            return;
+            return new Node(value);
         }
 
-        if (node->value < _root->value) {
-            if (_root->left == nullptr) {
-                _root->left = node;
-                node->parent = _root;
-                _size++;
-            } else append_node(node, _root->left);
-        } else if (node->value > _root->value) {
-            if (_root->right == nullptr) {
-                _root->right = node;
-                node->parent = _root;
-                _size++;
-            } else append_node(node, _root->right);
+        // traverse the tree to find the right place for the new node
+        if (value < _root->value)
+            _root->left = _append_node(_root->left, value);
+        else if (value > _root->value)
+            _root->right = _append_node(_root->right, value);
+
+        // Balance the tree
+
+        // Update height of the root
+        int left_height     = height(_root->left),
+            right_height    = height(_root->right);
+        // determine height of root (max of left or right subtree + 1)
+        // (because it is the longest path from root to leaf)
+        _root->height = 1 + std::max(left_height, right_height);
+
+        // determine balance factor
+        int balance_factor = left_height - right_height;
+
+        // if balance_factor is greater than 1
+        // then tree is left heavy -> right rotation
+        if (balance_factor > 1) {
+            if (value < _root->left->value) {
+                return right_rotation(_root);
+            } else {
+                // left rotation on left subtree (because it is right heavy)
+                _root->left = left_rotation(_root->left);
+                return right_rotation(_root);
+            }
         }
+        // if balance_factor is less than -1
+        // then tree is right heavy -> left rotation
+        else if (balance_factor < -1) {
+            if (value > _root->right->value) {
+                return left_rotation(_root);
+            } else {
+                // right rotation on right subtree (because it is left heavy)
+                _root->right = right_rotation(_root->right);
+                return left_rotation(_root);
+            }
+        }
+        return _root;
     }
 
-    void remove_node(Node* node) {
-        if (node->parent == nullptr) {
-            root = nullptr;
+    Node* _remove_node(Node* _root, T value) {
+        if (_root == nullptr) return nullptr;
 
-            Node* left = node->left, *right = node->right;
-            delete node;
+        // traverse the tree to find the right node
+        if (value < _root->value) {
+            _root->left = _remove_node(_root->left, value);
+        } else if (value > _root->value) {
+            _root->right = _remove_node(_root->right, value);
+        } else /* if reached the value */ {
+            Node *r = _root->right;
+            if (_root->right == nullptr) {
+                Node *l = _root->left;
+                delete _root;
+                _root = l;
+            } else if (_root->left == nullptr) {
+                delete _root;
+                _root = r;
+            } else /* if both leaves are present */ {
+                // find the smallest value in the right subtree
+                while (r->left != nullptr) r = r->left;
 
-            if (left != nullptr) {
-                root = left;
-                left->parent = nullptr;
-                append_node(right, root);
-            } else if (right != nullptr) {
-                root = right;
-                right->parent = nullptr;
+                // and replace the root with it
+                _root->value = r->value;
+                _root->right = _remove_node(_root->right, r->value);
             }
-
-            _size--;
-            return;
         }
 
-        if (node->parent->left == node) node->parent->left = nullptr;
-        else node->parent->right = nullptr;
+        if (_root == nullptr) return nullptr;
 
-        Node* left = node->left, *right = node->right;
+        // Balance the tree
 
-        delete node;
-        _size--;
+        // Update height of the root
+        int left_height = height(_root->left),
+            right_height = height(_root->right);
+        // determine height of root (max of left or right subtree + 1)
+        // (because it is the longest path from root to leaf)
+        _root->height = 1 + std::max(left_height, right_height);
 
-        append_node(left, root);
-        append_node(right, root);
+        // determine balance factor
+        int balance_factor = left_height - right_height;
+        if (balance_factor > 1) {
+            if (height(_root->left) >= height(_root->right))
+                return right_rotation(_root);
+            else {
+                _root->left = left_rotation(_root->left);
+                return right_rotation(_root);
+            }
+        } else if (balance_factor < -1) {
+            if (height(_root->right) >= height(_root->left))
+                return left_rotation(_root);
+            else {
+                _root->right = right_rotation(_root->right);
+                return left_rotation(_root);
+            }
+        }
+        return _root;
+    }
+
+    size_t height(Node* node) {
+        return node == nullptr ? 0 : node->height;
+    }
+
+    Node* right_rotation(Node* _root) {
+        // new root is the left child of the old root
+        // (anti-clockwise rotation)
+        Node *new_root = _root->left;
+
+        _root->left = new_root->right;
+        // new root's right child is the old root
+        new_root->right = _root;
+
+        // update heights
+        _root->height = 1 + std::max(
+                height(_root->left),
+                height(_root->right)
+        );
+        new_root->height = 1 + std::max(
+                height(new_root->left),
+                height(new_root->right)
+        );
+
+        return new_root;
+    }
+
+    Node* left_rotation(Node* _root){
+        // new root is the right child of the old root
+        // (clockwise rotation)
+        Node* new_root = _root->right;
+
+        _root->right = new_root->left;
+        // new root's left child is the old root
+        new_root->left = _root;
+
+        // update heights
+        _root->height = 1 + std::max(
+                height(_root->left),
+                height(_root->right)
+        );
+        new_root->height = 1 + std::max(
+                height(new_root->left),
+                height(new_root->right)
+        );
+
+        return new_root;
     }
 
 private:
@@ -125,12 +213,12 @@ public:
         POSTORDER
     };
 
-    BST() {
+    AVL() {
         root = nullptr;
         _size = 0;
     }
 
-    BST(std::initializer_list<T> list) {
+    AVL(std::initializer_list<T> list) {
         root = nullptr;
         _size = 0;
         for (auto value : list) {
@@ -138,7 +226,7 @@ public:
         }
     }
 
-    ~BST() {
+    ~AVL() {
         delete_tree(root);
     }
 
@@ -147,7 +235,7 @@ public:
     }
 
     void emplace(T value) {
-        append_node(new Node(value), root);
+        root = _append_node(root, value);
     }
 
     bool contains(T value) {
@@ -155,9 +243,7 @@ public:
     }
 
     void remove(T value) {
-        Node* node = find(value);
-        if (node == nullptr) return;
-        remove_node(node);
+        root = _remove_node(root, value);
     }
 
     void forEach(std::function<void(T)> func, Traversal traversal = Traversal::INORDER) {
@@ -174,16 +260,16 @@ public:
 };
 
 template <class T>
-std::ostream& operator<<(std::ostream& os, BST<T>& bst) {
-    bst.forEach([&](T value) {
+std::ostream& operator<<(std::ostream& os, AVL<T>& _tree) {
+    _tree.forEach([&](T value) {
         os << value << " ";
-    }, BST<T>::Traversal::INORDER);
+    }, AVL<T>::Traversal::INORDER);
     return os;
 }
 
 int main() {
     using namespace std;
-    BST<int> tree;
+    AVL<int> tree;
 
     int queries;
     string query;
@@ -205,6 +291,10 @@ int main() {
                 int element;
                 cin >> element;
                 cout << (tree.contains(element) ? "Yes" : "No") << endl;
+            } else if (query == "remove") {
+                int element;
+                cin >> element;
+                tree.remove(element);
             }
         }
         catch (out_of_range& e) {}
