@@ -84,7 +84,7 @@ int main() {
         cin >> prodov;
 
         if (prodov == "No") {
-            cout << "Goodbye) See you later";
+            cout << "Goodbye! See you soon)";
             return 0;
         }
 
