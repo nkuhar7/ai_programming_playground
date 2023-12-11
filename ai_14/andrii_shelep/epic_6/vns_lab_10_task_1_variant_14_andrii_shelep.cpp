@@ -98,7 +98,7 @@ void deleteEl(dblLinkedList* List, int index){
         return;
     }
     if(index >= List->size || index < 0){
-        printf("wrong index");
+        cout << "wrong index" << endl;
         return;
     }
     Node* current = List->head;
@@ -179,20 +179,36 @@ int main(){
     cout << "formed list: ";
     printList(list);
 
-    cout << endl;
-    deleteEl(list, 1);
-    cout << "after first deleting: ";
-    printList(list);
-    
-    cout << endl;
-    deleteEl(list, 3);
-    cout << "after second deleting: ";
+    int K;
+    cout << endl << "enter the number of elements: " << endl;
+    cin >> K;
+    for(int i = 0; i < K; i++){
+        char word[10];
+        int index;
+        cout << "enter the short word: ";
+        cin >> word;
+        cout << "enter the index of new element: ";
+        cin >> index;
+        addEl(list, index, word);
+    }
+
+    cout << "updated list: ";
     printList(list);
 
-    cout << endl;
-    deleteEl(list, 3);
-    cout << "after third deleting: ";
-    printList(list);
+    cout << endl << "enter the number of elements to delete: ";
+    cin >> K;
+    if(K>list->size){
+        cout << "there are not many elements in the list" << endl;
+    } else{
+        for(int i = 0; i < K; i++){
+            int index;
+            cout << endl << "enter the index of element to delete: ";
+            cin >> index;
+            deleteEl(list, index);
+            cout << "after deleting: ";
+            printList(list);
+        }
+    }
 
     write_to_file(list, "dbllinkedlist.txt");
 
