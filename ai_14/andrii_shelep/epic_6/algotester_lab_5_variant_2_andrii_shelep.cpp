@@ -13,17 +13,21 @@ int main(){
     }
 
     for(int i = 0; i < M; i++){
-        for(int k = 0; k < N-1; k++){
-            for(int j = 0; j < N-k-1; j++){
-                if(cave[j][i]=='S' && cave[j+1][i]=='O'){
+        for(int j = N-1; j >= 0; j--){
+            if(cave[j][i]=='S'){
+                int k = j+1;
+                while(k<N && cave[k][i]!='X' && cave[k][i]!='S'){
+                    k++;
+                }
+                k--;
+                if(k!=j){
                     char tmp = cave[j][i];
-                    cave[j][i] = cave[j+1][i];
-                    cave[j+1][i] = tmp;
+                    cave[j][i]=cave[k][i];
+                    cave[k][i]=tmp;
                 }
             }
         }
     }
-    cout << endl;
     
     for(int i = 0; i < N; i++){
         for(int j = 0; j < M; j++){
