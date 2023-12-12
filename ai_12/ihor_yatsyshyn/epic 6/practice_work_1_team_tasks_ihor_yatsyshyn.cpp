@@ -158,20 +158,20 @@ int main()
     linked_list.push_back(9);
     linked_list.push_back(7);
     linked_list.push_back(3);
-    /* linked_list.push_back(4);
-    linked_list.push_back(5); */
+    linked_list.push_back(4);
+    linked_list.push_back(5);
 
     linked_list_2.push_back(9);
     linked_list_2.push_back(7);
     linked_list_2.push_back(3);
-    /* linked_list_2.push_back(4);
-    linked_list_2.push_back(5); */
+    linked_list_2.push_back(4);
+    linked_list_2.push_back(5);
 
     LinkedList result_linked_list;
     result_linked_list.head = add(linked_list.head, linked_list_2.head);
     result_linked_list.print(result_linked_list.head);
 
-    /* bool comparing_result = compare(linked_list.head, linked_list_2.head);
+     bool comparing_result = compare(linked_list.head, linked_list_2.head);
 
     if (comparing_result)
     {
@@ -180,13 +180,13 @@ int main()
     else
     {
         cout << "Linked lists are different" << endl;
-    } */
+    }
 
-    /* linked_list.print(linked_list.head);
+    linked_list.print(linked_list.head);
 
     linked_list.head = linked_list.reverse(linked_list.head);
 
-    linked_list.print(linked_list.head); */
+    linked_list.print(linked_list.head);
 
     return 0;
 }

@@ -15,8 +15,9 @@ public:
         arr = new int[capacity];
     }
 
-    ~DynamicArray() {
-        //delete[] arr;
+    ~DynamicArray() 
+    {
+        
     }
 
     void insert(int index, int num, int *data)

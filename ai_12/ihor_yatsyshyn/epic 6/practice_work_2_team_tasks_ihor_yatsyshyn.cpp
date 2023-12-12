@@ -93,10 +93,10 @@ int main()
     in_order(root);
     cout << endl;
 
-    /* Node *mirror_Root = create_mirror_flip(root);
+    Node *mirror_Root = create_mirror_flip(root);
 
     in_order(mirror_Root);
-    cout << endl; */
+    cout << endl;
 
     tree_sum(root);
     in_order(root);
