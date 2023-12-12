@@ -6,7 +6,7 @@
 enum FileOpResult { Success, Failure };
 
 FileOpResult write_to_file(const char *name, const std::string &content) {
-    std::ofstream outputFile(name, std::ios::app);  // Open file in append mode
+    std::ofstream outputFile(name, std::ios::app);
 
     if (!outputFile.is_open()) {
         std::cerr << "Error opening file: " << name << std::endl;
@@ -30,7 +30,6 @@ FileOpResult read_and_copy(const char *inputFile, const char *outputFile) {
     std::string line;
     size_t i = 0;
     while (std::getline(inputFileStream, line)) {
-        // Add your requirements here
         std::cout << i << ". " << line << std::endl;
         i++;
     }
@@ -39,13 +38,11 @@ FileOpResult read_and_copy(const char *inputFile, const char *outputFile) {
     std::cout << "Enter the range of the lines you want to check before copying:" << std::endl;
     std::cin >> start >> end;
 
-    // Close and reopen the file to reset the file stream
     inputFileStream.close();
     inputFileStream.open(inputFile);
 
     size_t x = 0;
     while (std::getline(inputFileStream, line)) {
-        // Add your requirements here
         if (line.find('a') == std::string::npos && line.find('A') == std::string::npos && x > start && x < end) {
             outputFileStream << line << std::endl;
         }
