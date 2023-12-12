@@ -39,25 +39,25 @@ int main()
 
         if(weather == snowy || weather == rainy )
         {
-            cout<<"put on a jacket<<endl";
+            cout<<"put on a jacket"<<endl;
         }
-
+            
         switch (weather[1]) 
         {
         case /*sunny*/ 'u':
-         cout<<"";
+         cout<<"Wear your favorite sneakers";
          break;
         case /*rainy*/'a':
-         cout<<"";
+         cout<<"Rain boots are a good idea";
          break;
         case /*windy*/'i':
-         cout<<"";
+         cout<<"Put on something sturdy";
          break;
         case /*snowy*/'n':
-         cout<<"";
+         cout<<"Snow boots will keep your feet warm";
          break;
         case /*cloudy*/'l':
-         cout<<"";
+         cout<<"Any shoe is fine today";
          break;
         }
         cout<<endl;
