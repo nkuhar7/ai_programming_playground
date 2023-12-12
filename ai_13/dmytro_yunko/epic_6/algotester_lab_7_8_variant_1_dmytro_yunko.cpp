@@ -146,7 +146,7 @@ int main()
     cin >> Q;
     cin.ignore();
 
-    string *identifiers = new string[Q];
+    string identifiers[Q] ;
 
     for (size_t i = 0; i < Q; i++)
     {
@@ -195,6 +195,6 @@ int main()
         }
     }
 
-    delete[] identifiers;
+   
     return 0;
 }
