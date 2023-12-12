@@ -60,11 +60,11 @@ int main()
     cout << "Enter the words: ";
     getline(cin, inputString);
 
-    int wordCount = countWords(inputString);
-    cout << "The amount of words is: " << wordCount << endl;
-
     int oddNumCount = countOddElements(array, size);
-    cout << "The amount of odd numbers is: " << oddNumCount << endl;
+    cout << "The amount of odd numbers is: " << oddNumCount << "\n";
+
+    int wordCount = countWords(inputString);
+    cout << "The amount of words is: " << wordCount << "\n";
 
     return 0;
 }
