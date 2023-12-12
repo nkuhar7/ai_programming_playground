@@ -27,7 +27,7 @@ int main() {
     // Створюємо новий масив сум сусідніх елементів
     vector<int> sums;
     for (int i = 0; i < N - 1; ++i) {
-        sums.push_back(m[i] + m[i + 1]);
+        sums.push_back(m[i] + m[i + 1]);//Отримана сума додається до вектора sums ззаду.
     }
 
     if (N > 1) {

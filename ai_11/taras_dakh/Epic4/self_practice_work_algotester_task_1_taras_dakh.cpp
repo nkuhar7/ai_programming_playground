@@ -15,7 +15,7 @@ int main() {
     std::cout << "Enter the size of the array: ";
     std::cin >> n;
 
-    int* myArray = new int[n];
+    int* myArray = new int[n]; // Виділяється динамічна пам'ять для масиву цілих чисел розміром n
 
     std::cout << "Enter the elements of the array:" << std::endl;
     for (int i = 0; i < n; ++i) {
