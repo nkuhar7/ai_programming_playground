@@ -2,16 +2,12 @@
 #include <algorithm>
 using namespace std;
 
-int h1,h2,h3,h4;
-int d1,d2,d3,d4; 
-int main ()
-{
-    cout<<"enter the height of table legs "<<endl;
+long long h1, h2, h3, h4, d1, d2, d3, d4;
+int main (){
     cin>>h1>>h2>>h3>>h4;
-    cout<<"enter the length that will be sawn off from the leg"<<endl;
     cin>>d1>>d2>>d3>>d4;
 
-    if (d1>h2 || d2>h2 || d3>h3 || d4>h4)
+    if (d1>h1|| d2>h2 || d3>h3 || d4>h4)
     {
         cout << "ERROR" << endl;
         return 0;
