@@ -3,13 +3,16 @@
 #include <string>
 using namespace std;
 
-bool digit(const string& line) {
-    for (char num : line) {
-        if (isdigit(num)) {
+bool digit(const string& line) 
+{
+    for (char num : line) 
+    {
+        if (isdigit(num)) 
+        {
             return true;
         }
     }
-    return false;
+return false;
 }
 
 int main() 
