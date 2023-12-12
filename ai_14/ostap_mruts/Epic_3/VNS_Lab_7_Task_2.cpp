@@ -1,62 +1,39 @@
 #include <iostream>
-#include <climits>
-#include <cstring>
+#include <string>
+#include <vector>
 
-using namespace std;
-
-int findMin(const int arr[], int size) {
-    if (size <= 0) {
-        cout << "Array is empty" << endl;
-        return INT_MIN; // Повертаємо мінімальне значення для int, щоб позначити помилку
-    }
-
-    int minVal = arr[0];
-    for (int i = 1; i < size; ++i) {
-        if (arr[i] < minVal) {
-            minVal = arr[i];
+int Min(const std::vector<int>& arr) {
+    int min = arr[0];
+    for (size_t i = 1; i < arr.size(); ++i) {
+        if (arr[i] < min) {
+            min = arr[i];
         }
     }
-    return minVal;
+    return min;
 }
 
-int findShortestWordLength(const char* str) {
-    if (str == nullptr || strlen(str) == 0) {
-        cout << "Empty string" << endl;
-        return 0; // Повертаємо 0 для позначення порожнього рядка
-    }
+size_t Min(const std::string& str) {
+    size_t shortest = str.length();
+    size_t currentLength = 0;
 
-    int shortestLength = INT_MAX;
-    int currentWordLength = 0;
-    int len = strlen(str);
-
-    for (int i = 0; i <= len; ++i) {
-        if (str[i] != ' ' && str[i] != '\0') {
-            currentWordLength++;
+    for (char c : str) {
+        if (c != ' ') {
+            ++currentLength;
         } else {
-            if (currentWordLength < shortestLength && currentWordLength > 0) {
-                shortestLength = currentWordLength;
-            }
-            currentWordLength = 0;
+            shortest = std::min(shortest, currentLength);
+            currentLength = 0;
         }
     }
-    return shortestLength;
+    shortest = std::min(shortest, currentLength);
+    return shortest;
 }
 
 int main() {
-    // Приклад для знаходження мінімального елемента у масиві
-    int intArray[] = {3, 7, -5, 2, 10, 1};
-    int arraySize = sizeof(intArray) / sizeof(int);
-    int minElement = findMin(intArray, arraySize);
-    if (minElement != INT_MIN) {
-        cout << "The minimum element is: " << minElement << endl;
-    }
+    std::vector<int> numbers = {5, 3, 9, 1, 7};
+    std::cout << "Мінімальний елемент у масиві: " << Min(numbers) << std::endl;
 
-    // Приклад для знаходження довжини найкоротшого слова у рядку
-    const char* sentence = "This is a sample sentence";
-    int shortestWordLength = findShortestWordLength(sentence);
-    if (shortestWordLength > 0) {
-        cout << "The shortest word is: " << shortestWordLength << endl;
-    }
+    std::string text = "The shortest word is";
+    std::cout << "Довжина найкоротшого слова: " << Min(text) << std::endl;
 
     return 0;
 }
