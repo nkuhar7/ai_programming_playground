@@ -123,10 +123,11 @@ public:
 
         current->value = value;
     }
+    
 
-    friend std::ostream &operator<<(std::ostream &os, const DoublyLinkedList &list)
+    ostream& operator<<(ostream &os)
     {
-        Node *current = list.head;
+        Node *current = head;
         while (current != nullptr)
         {
             os << current->value << ' ';
@@ -189,7 +190,8 @@ int main()
         }
         if (identifiers[i] == "print")
         {
-            cout << list << endl;
+            
+            list<<cout<<endl;
         }
     }
 
