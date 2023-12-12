@@ -146,14 +146,14 @@ int main()
     cin >> Q;
     cin.ignore();
 
-    string identifiers[Q] ;
+    string identifier ;
 
     for (size_t i = 0; i < Q; i++)
     {
 
-        cin >> identifiers[i];
+        cin >> identifier;
 
-        if (identifiers[i] == "insert")
+        if (identifier == "insert")
         {
             int index{0}, N{0};
             vector<int> ar;
@@ -166,29 +166,29 @@ int main()
             }
             list.insert(index, ar);
         }
-        if (identifiers[i] == "erase")
+        if (identifier == "erase")
         {
             int index{0}, n{0};
             cin >> index >> n;
             list.erase(index, n);
         }
-        if (identifiers[i] == "size")
+        if (identifier == "size")
         {
             cout << list.getSize() << endl;
         }
-        if (identifiers[i] == "get")
+        if (identifier == "get")
         {
             int index{0};
             cin >> index;
             cout<<list.get(index)<<endl;
         }
-        if (identifiers[i] == "set")
+        if (identifier == "set")
         {
             int index{0}, newValue{0};
             cin >> index >> newValue;
             list.set(index, newValue);
         }
-        if (identifiers[i] == "print")
+        if (identifier == "print")
         {
             
             list<<cout<<endl;
