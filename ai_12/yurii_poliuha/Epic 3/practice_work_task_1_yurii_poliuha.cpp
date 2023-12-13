@@ -14,7 +14,7 @@ int main(){
 
     while (exit == false) {
 
-    menu: cout << "\nLIBRARY MENU\n";
+    start: cout << "\nLIBRARY MENU\n";
         cout << "1.List of books\n";
         cout << "2.Availability of books\n";
         cout << "3.Borrow a book\n";
@@ -37,8 +37,6 @@ int main(){
                 while(x != 0 ){
                     cout << "To exit press 0: ";
                     cin >> x;
-                    cout << endl;
-                    if (x == 0) goto menu;
                 }
             } break;
 
@@ -49,7 +47,6 @@ int main(){
                         k++;
                         cout << k << ". " << books[i] << " is available\n";
                     }
-                    else continue;
                 } 
 
                 cout << endl;
@@ -58,7 +55,6 @@ int main(){
                         p++;
                         cout << p << ". " << books[i] << " isn't available\n";
                     }
-                    else continue;
                 } 
 
                 int x;
@@ -68,8 +64,6 @@ int main(){
                 while(x != 0 ){
                     cout << "To exit press 0: ";
                     cin >> x;
-                    cout << endl;
-                    if (x == 0) goto menu;
                 }
             } break;
 
@@ -80,7 +74,6 @@ int main(){
                         k++;
                         cout << k << ". " << books[i] << " is available\n";
                     }
-                    else continue;
                 }
 
                 cout << "Choose the book you want to borrow or come back to the menu (You can borrow only one book): ";
@@ -118,7 +111,6 @@ int main(){
             {
                 if (books_i_took == "") {
                     cout << "You didn't borrow anything" << endl;
-                    break;
                 }
                 cout << "You borrow \"" << books_i_took << "\"\nYou can return it." << endl;
                 cout << "To return this book press 1/to exit press 0: ";
@@ -154,6 +146,7 @@ int main(){
             {
                 cout << "\nYou leave the library";
                 exit = true;
+                return 0;
             } break;
 
             default: 
@@ -163,11 +156,11 @@ int main(){
             }
         }
 
-        char choice_to_con;
+    menu: char choice_to_con;
         do {
             cout << "Do you rant to continue? Y/N: ";
             cin >> choice_to_con;
-            if (choice_to_con == 'Y') goto menu;
+            if (choice_to_con == 'Y') goto start;
             else if (choice_to_con == 'N') {
                 cout << "\nYou leave the library";
                 return 0;
