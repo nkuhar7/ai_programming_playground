@@ -25,7 +25,7 @@ int main() {
                 lastEmpty--;  
             }
             else if (vec[i][j] == 'X') {  
-                lastEmpty = i - 1;  // 
+                lastEmpty = i - 1;  
             }
         }
     }
