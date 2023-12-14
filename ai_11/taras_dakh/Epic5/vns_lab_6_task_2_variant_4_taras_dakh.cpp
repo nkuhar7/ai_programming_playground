@@ -1,31 +1,49 @@
 #include <iostream>
 #include <sstream>
 
+// Функція для виведення слів, які співпадають з першим словом у рядку
 void printMatchingWords(const std::string& str) {
+    // Створення строкового потоку із введеного рядка ,для розбиття введеного рядка на слова.
     std::istringstream iss(str);
+
+    // Оголошення змінної для зберігання першого слова
     std::string firstWord;
+
+    // Зчитування першого слова із строкового потоку
     iss >> firstWord;
 
+    // Перевірка, чи перше слово не порожнє
     if (!firstWord.empty()) {
-        std::cout << "Words matching with the first word \"" << firstWord << "\":\n";
 
+        std::cout << "Слова, які співпадають з першим словом \"" << firstWord << "\":\n";
+
+        // зберігання кожного наступного слова
         std::string word;
+
+        // Ітерація через кожне слово у строковому потоці
         while (iss >> word) {
+            // Перевірка, чи поточне слово співпадає з першим
             if (word == firstWord) {
+                // Виведення співпадаючого слова
                 std::cout << word << std::endl;
             }
         }
     }
 }
 
+
 int main() {
+    // Оголошення масиву символів для зберігання введеного рядка (до 255 символів)
     char inputString[256];
 
-    std::cout << "Enter a string (up to 255 characters): ";
-       gets(inputString);
+    std::cout << "Введіть рядок (до 255 символів): ";
 
-    // Call the function for processing and printing matching words
+    // Зчитування рядка від користувача та зберігання його у масиві inputString
+    gets(inputString); 
+
+    // Виклик функції для обробки та виведення співпадаючих слів
     printMatchingWords(inputString);
 
+    
     return 0;
 }

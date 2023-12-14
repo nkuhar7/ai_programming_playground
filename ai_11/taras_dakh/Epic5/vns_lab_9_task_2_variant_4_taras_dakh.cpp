@@ -42,7 +42,7 @@ int main() {
     while (getline(f1Read, line)) {
         lineCount++;
         if (lineCount >= 4) {
-            f2 << line << endl;
+            f2 << line << endl;   //Зчитується кожен рядок з файлу F1. Якщо лічильник lineCount більший або рівний 4, рядок записується у файл F2
         }
     }
 

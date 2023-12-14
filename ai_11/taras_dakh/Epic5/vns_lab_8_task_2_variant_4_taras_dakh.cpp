@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// Структура для представлення інформації про людину
 struct Person {
     char lastName[50];
     char firstName[50];
@@ -13,40 +14,42 @@ struct Person {
     int age;
 };
 
+// Функція для виведення вмісту бінарного файлу
 void printBinaryFileContents(const char* filename) {
     ifstream inFile(filename, ios::binary);
 
     if (!inFile.is_open()) {
-        cerr << "Unable to open file: " << filename << endl;
+        cerr << "Неможливо відкрити файл: " << filename << endl;
         return;
     }
 
     Person person;
     while (inFile.read(reinterpret_cast<char*>(&person), sizeof(person))) {
-        cout << "Last Name: " << person.lastName << "\n";
-        cout << "First Name: " << person.firstName << "\n";
-        cout << "Patronymic: " << person.patronymic << "\n";
-        cout << "Address: " << person.address << "\n";
-        cout << "Phone Number: " << person.phoneNumber << "\n";
-        cout << "Age: " << person.age << "\n\n";
+        cout << "Прізвище: " << person.lastName << "\n";
+        cout << "Ім'я: " << person.firstName << "\n";
+        cout << "По батькові: " << person.patronymic << "\n";
+        cout << "Адреса: " << person.address << "\n";
+        cout << "Номер телефону: " << person.phoneNumber << "\n";
+        cout << "Вік: " << person.age << "\n\n";
     }
 
     inFile.close();
 }
 
+// Функція для видалення записів за вказаним віком
 void deleteByAge(const char* filename, int ageToDelete) {
-    ifstream inFile(filename, ios::binary);
-    ofstream outFile("temp.bin", ios::binary);
+    ifstream inFile(filename, ios::binary);  //Створює об'єкт для читання з файлу (ios::binary вказує, що файл є бінарним).
+    ofstream outFile("temp.bin", ios::binary);   //Створює об'єкт для запису у новий тимчасовий файл temp.bin
 
     if (!inFile.is_open() || !outFile.is_open()) {
-        cerr << "Unable to open file for deletion." << endl;
+        cerr << "Неможливо відкрити файл для видалення." << endl;
         return;
     }
 
-    Person person;
-    while (inFile.read(reinterpret_cast<char*>(&person), sizeof(person))) {
+    Person person;  //Створюється об'єкт person типу Person, який використовується для зчитування даних з вхідного файлу.
+    while (inFile.read(reinterpret_cast<char*>(&person), sizeof(person))) {   //зчитуються блоки даних розміром sizeof(person) з вхідного файлу
         if (person.age != ageToDelete) {
-            outFile.write(reinterpret_cast<char*>(&person), sizeof(person));
+            outFile.write(reinterpret_cast<char*>(&person), sizeof(person)); //Кожний зчитаний запис порівнюється за віком з ageToDelete, і якщо вік не збігається, запис додається до тимчасового файлу.
         }
     }
 
@@ -56,29 +59,30 @@ void deleteByAge(const char* filename, int ageToDelete) {
     remove(filename);
     rename("temp.bin", filename);
 
-    cout << "Persons with age " << ageToDelete << " removed successfully.\n";
+    cout << "Особи з віком " << ageToDelete << " успішно видалено.\n";
 }
 
+// Функція для додавання запису після конкретного індексу
 void addAfterIndex(const char* filename, int index, const Person& newPerson) {
     ifstream inFile(filename, ios::binary);
     ofstream outFile("temp.bin", ios::binary);
 
     if (!inFile.is_open() || !outFile.is_open()) {
-        cerr << "Unable to open file for addition." << endl;
+        cerr << "Неможливо відкрити файл для додавання." << endl;
         return;
     }
 
     Person person;
     int currentIndex = 0;
 
-    while (inFile.read(reinterpret_cast<char*>(&person), sizeof(person))) {
+    while (inFile.read(reinterpret_cast<char*>(&person), sizeof(person))) {  //зчитуються блоки даних розміром sizeof(person) з вхідного файлу
         outFile.write(reinterpret_cast<char*>(&person), sizeof(person));
 
         if (currentIndex == index) {
             outFile.write(reinterpret_cast<const char*>(&newPerson), sizeof(newPerson));
         }
 
-        currentIndex++;
+        currentIndex++;   //Кожний зчитаний запис записується у тимчасовий файл. Якщо досягнутий індекс, на якому ми хочемо вставити новий запис, цей новий запис також додається у тимчасовий файл.
     }
 
     inFile.close();
@@ -87,41 +91,42 @@ void addAfterIndex(const char* filename, int index, const Person& newPerson) {
     remove(filename);
     rename("temp.bin", filename);
 
-    cout << "Person added after index " << index << " successfully.\n";
+    cout << "Особу додано після індексу " << index << " успішно.\n";
 }
 
+// Функція для заповнення файлу інформацією про людей
 void fillFile(const char* filename, int count) {
     Person person;
     ofstream file(filename, ios::binary);
 
     if (!file.is_open()) {
-        cerr << "Error opening file for writing: " << filename << endl;
+        cerr << "Помилка відкриття файлу для запису: " << filename << endl;
         return;
     }
 
     for (int i = 0; i < count; ++i) {
-        cout << "\nEnter details for person " << i + 1 << ":\n";
-        cout << "Last Name: ";
+        cout << "\nВведіть дані для особи " << i + 1 << ":\n";
+        cout << "Прізвище: ";
         cin.getline(person.lastName, sizeof(person.lastName));
 
-        cout << "First Name: ";
+        cout << "Ім'я: ";
         cin.getline(person.firstName, sizeof(person.firstName));
 
-        cout << "Patronymic: ";
+        cout << "По батькові: ";
         cin.getline(person.patronymic, sizeof(person.patronymic));
 
-        cout << "Address: ";
+        cout << "Адреса: ";
         cin.getline(person.address, sizeof(person.address));
 
-        cout << "Phone Number: ";
+        cout << "Номер телефону: ";
         cin.getline(person.phoneNumber, sizeof(person.phoneNumber));
 
-        cout << "Age: ";
+        cout << "Вік: ";
         cin >> person.age;
 
-        cin.ignore(); // Clear the newline character from the buffer
+        cin.ignore(); // Очищення символу нового рядка з буфера
 
-        file.write(reinterpret_cast<const char*>(&person), sizeof(person));
+        file.write(reinterpret_cast<const char*>(&person), sizeof(person)); //Викликається file.write, який записує об'єкт person у бінарний файл;перетворення типу об'єкта на покажчик на const char, щоб його можна було записати у бінарний файл.
     }
 
     file.close();
@@ -129,49 +134,49 @@ void fillFile(const char* filename, int count) {
 
 int main() {
     const char* filename = "people_data.bin";
-    int count = 3; // You can change this to the desired number of initial records
+    int count = 3; 
 
     fillFile(filename, count);
 
-    cout << "\nInitial file contents:\n";
+    cout << "\nПочатковий вміст файлу:\n";
     printBinaryFileContents(filename);
 
     int ageToDelete;
-    cout << "\nEnter the age to remove: ";
+    cout << "\nВведіть вік для видалення: ";
     cin >> ageToDelete;
     deleteByAge(filename, ageToDelete);
 
-    cout << "\nFile contents after removal:\n";
+    cout << "\nВміст файлу після видалення:\n";
     printBinaryFileContents(filename);
 
     int insertIndex;
-    cout << "\nEnter the index to insert after: ";
+    cout << "\nВведіть індекс для вставки після: ";
     cin >> insertIndex;
-    cin.ignore(); // Clear the newline character from the buffer
+    cin.ignore(); // Очищення символу нового рядка з буфера
 
     Person newPerson;
-    cout << "\nEnter details for the new person:\n";
-    cout << "Last Name: ";
+    cout << "\nВведіть дані для нової особи:\n";
+    cout << "Прізвище: ";
     cin.getline(newPerson.lastName, sizeof(newPerson.lastName));
 
-    cout << "First Name: ";
+    cout << "Ім'я: ";
     cin.getline(newPerson.firstName, sizeof(newPerson.firstName));
 
-    cout << "Patronymic: ";
+    cout << "По батькові: ";
     cin.getline(newPerson.patronymic, sizeof(newPerson.patronymic));
 
-    cout << "Address: ";
+    cout << "Адреса: ";
     cin.getline(newPerson.address, sizeof(newPerson.address));
 
-    cout << "Phone Number: ";
+    cout << "Номер телефону: ";
     cin.getline(newPerson.phoneNumber, sizeof(newPerson.phoneNumber));
 
-    cout << "Age: ";
+    cout << "Вік: ";
     cin >> newPerson.age;
 
     addAfterIndex(filename, insertIndex, newPerson);
 
-    cout << "\nFile contents after addition:\n";
+    cout << "\nВміст файлу після додавання:\n";
     printBinaryFileContents(filename);
 
     return 0;
