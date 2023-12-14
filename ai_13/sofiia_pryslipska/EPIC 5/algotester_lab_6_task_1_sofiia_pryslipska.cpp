@@ -19,14 +19,14 @@ int main() {
     for (int i = 0; i < k; ++i) {
         string word;
         cin >> word;
-        transform(word.begin(), word.end(), word.begin(), ::tolower);  
+        transform(word.begin(), word.end(), word.begin(), ::tolower);  // Перетворення слова в нижній регістр
         words.push_back(word);
         count_words[word]++;
     }
 
     vector<string> word_result;
 
-  
+  // Визначення слів, що зустрічаються принаймні n разів
     for (const pair<string, int>& entry : count_words) {
         if (entry.second >= n) {
             word_result.push_back(entry.first);
@@ -40,12 +40,12 @@ int main() {
     }
 
     set<char> letters;
-
+     // Збір унікальних букв зі слів, що задовольняють умові
     for (const string& word : word_result) {
         letters.insert(word.begin(), word.end());
     }
 
-   
+   // Сортування букв у зворотньому алфавітному порядку
     vector<char> sorted_letters(letters.begin(), letters.end());
     sort(sorted_letters.begin(), sorted_letters.end(), greater<char>());
 
