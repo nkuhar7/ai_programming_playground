@@ -11,15 +11,19 @@ struct Stadium {
 };
 
 void printStadiums(const vector<Stadium>& stadiums) {
-    for (const Stadium& stadium : stadiums) {
-        cout << "Name: " << stadium.name << "\tYear Built: " << stadium.yearBuilt << "\tNumber of Fields: " << stadium.numOfFields << "\tSports: " << stadium.sports << endl;
+    for (int i = 0; i < stadiums.size(); i++) {
+        cout << "Name: " << stadiums[i].name << " Year Built: " << stadiums[i].yearBuilt << " Number of Fields: " << stadiums[i].numOfFields << " Sports: " << stadiums[i].sports << endl;
     }
 }
 
-void destroyStadiums(vector<Stadium>& stadiums, int year) {
-    stadiums.erase(remove_if(stadiums.begin(), stadiums.end(), [year](const Stadium& s) {
-        return s.yearBuilt < year;
-    }), stadiums.end());
+void destroyStadiums(std::vector<Stadium>& stadiums, int year) {
+    for (auto it = stadiums.begin(); it != stadiums.end(); ) {
+        if (it->yearBuilt < year) {
+            it = stadiums.erase(it);
+        } else {
+            it++;
+        }
+    }
 }
 
 void addStadiums(vector<Stadium>& stadiums, int targetIndex) {
@@ -27,9 +31,10 @@ void addStadiums(vector<Stadium>& stadiums, int targetIndex) {
         Stadium newStadium1 = {"NEW STADIUM 1", 2022, 1, "Handball"};
         Stadium newStadium2 = {"NEW STADIUM 2", 2022, 1, "Volleyball"};
 
-        stadiums.insert(stadiums.begin() + targetIndex-2, {newStadium1, newStadium2});
+        stadiums.insert(stadiums.begin() + targetIndex, {newStadium1, newStadium2});
     } else {
         cerr << "Invalid target index for adding stadiums." << endl;
+        return;
     }
 }
 
@@ -37,7 +42,7 @@ int main() {
     ofstream file1("stadiums.bin", ios::binary);
     if (!file1.is_open()) {
         cerr << "Error opening file1 for writing." << endl;
-        return 1;
+        return -1;
     }
 
     vector<Stadium> stadiums = {
@@ -57,24 +62,24 @@ int main() {
     ifstream file2("stadiums.bin", ios::binary);
     if (!file2.is_open()) {
         cerr << "Error opening file for reading." << endl;
-        return 1;
+        return -1;
     }
 
     cout << "Stadiums:" << endl;
     printStadiums(stadiums);
 
     int targetYear;
-    cout << "\nEnter target year: ";
+    cout << endl << "Enter target year: ";
     cin >> targetYear;
     destroyStadiums(stadiums, targetYear);
-    cout << "\nAfter destroying stadiums built before " << targetYear << ":" << endl;
+    cout << endl << "After destroying stadiums built before " << targetYear << ":" << endl;
     printStadiums(stadiums);
 
     int targetIndex;
-    cout << "\nEnter target index: ";
+    cout << endl << "Enter target index: ";
     cin >> targetIndex;
     addStadiums(stadiums, targetIndex);
-    cout << "\nAfter adding new stadiums before index " << targetIndex << ":" << endl;
+    cout << endl << "After adding new stadiums before index " << targetIndex << ":" << endl;
     printStadiums(stadiums);
 
     file2.close();

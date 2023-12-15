@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
-#include <vector>
 #include <sstream>
 #include <algorithm>
+#include <map>
 using namespace std;
 
 void copyLinesWithSameWords(const string& inputFile, const string& outputFile) {
@@ -15,40 +15,50 @@ void copyLinesWithSameWords(const string& inputFile, const string& outputFile) {
     }
 
     string line;
+
     while (getline(inFile, line)) {
         istringstream iss(line);
-        vector<string> words(istream_iterator<string>{iss}, istream_iterator<string>{});
+        string word;
+        map<string, int> wordCountMap;
 
-        if (adjacent_find(words.begin(), words.end()) != words.end()) {
-            outFile << line << endl;
+        while (iss >> word) {
+            wordCountMap[word]++;
+        }
+
+        for (const auto& entry : wordCountMap) {
+            if (entry.second >= 2) {
+                outFile << line << endl;
+            }
         }
     }
 
-    cout << "Copied lines with same words to " << outputFile << endl;
+    cout << "Words with count greater than two have been written to " << outputFile << endl;
 
     inFile.close();
     outFile.close();
 }
 
-int findWordWithMostA(const string& inputFile) {
-    ifstream inFile(inputFile);
+int findWordWithMostA(const string& filename) {
+    ifstream inFile(filename);
 
     if (!inFile.is_open()) {
         cerr << "Error opening file." << endl;
         return -1;
     }
 
-    string line;
-    int wordNumber = -1;
     int maxACount = 0;
+    int wordNumber = 0;
+    string line;
+    int currentWordNumber = 1;
 
     while (getline(inFile, line)) {
         istringstream iss(line);
         string word;
-        int currentWordNumber = 0;
+
 
         while (iss >> word) {
             int aCount = count(word.begin(), word.end(), 'a');
+
             if (aCount > maxACount) {
                 maxACount = aCount;
                 wordNumber = currentWordNumber;
@@ -60,32 +70,48 @@ int findWordWithMostA(const string& inputFile) {
 
     inFile.close();
 
+    if (maxACount > 0) {
+        cout << "The word with the most 'a's is at position: " << wordNumber << endl;
+    } else {
+        cout << "No word with 'a' found." << endl;
+    }
+
     return wordNumber;
+}
+
+void displayFileContent(const string& filename) {
+    ifstream file(filename);
+    if (file.is_open()) {
+        cout << "Content of " << filename << ":\n";
+        string line;
+        while (getline(file, line)) {
+            cout << line << endl;
+        }
+        file.close();
+    } else {
+        cerr << "Error opening file " << filename << endl;
+    }
 }
 
 int main() {
     ofstream f1("F1.txt");
-    f1 << "Apple Apple Cherry" << endl;
-    f1 << "Orange Grape Apple" << endl;
-    f1 << "Banana Lemon Cherry" << endl;
-    f1 << "Strawberry Raspberry" << endl;
-    f1 << "Peach Bananaaaaaaaa Grapefruit" << endl;
-    f1 << "Lemon Lime Banana aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << endl;
-    f1 << "Cherry Apple Mango" << endl;
-    f1 << "Mango Grape Pineapple" << endl;
-    f1 << "Grape Banana Orange" << endl;
-    f1 << "Lemon Orange Grape" << endl;
-    f1.close();
-
+    if (f1.is_open()) {
+        f1 << "sdhjkgfkldsf dfv jdfj jdgfh" << endl;
+        f1 << "aaaaaaaa kjdfgk jdhfksg jfhdjdf" << endl;
+        f1 << "njhjhf njhjhf sdf" << endl;
+        f1.close();
+    } else {
+        cerr << "Error opening file F1.txt for writing." << endl;
+        return 1;
+    }
 
     copyLinesWithSameWords("F1.txt", "F2.txt");
 
-    int wordNumberWithMostA = findWordWithMostA("F1.txt");
-    if (wordNumberWithMostA != -1) {
-        cout << "Word number with most 'A': " << wordNumberWithMostA << endl;
-    } else {
-        cerr << "Error finding word with most 'A'." << endl;
-    }
+    findWordWithMostA("F1.txt");
+
+    cout << endl;
+
+    displayFileContent("F2.txt");
 
     return 0;
 }
