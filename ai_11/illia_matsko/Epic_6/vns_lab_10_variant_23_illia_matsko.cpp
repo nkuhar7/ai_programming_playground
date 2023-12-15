@@ -15,8 +15,8 @@ public:
 template <class T>
 class DoubleLinkedList {
 private:
-    Node<T>* head;
-    Node<T>* tail;
+    Node<T>* head = nullptr;
+    Node<T>* tail = nullptr;
 
 public:
     int size = 0;
@@ -57,19 +57,9 @@ public:
 
     void erase(int index) {
         Node<T>* NodeToErase = head;
-        while (index > 0) {
-            NodeToErase = NodeToErase->next;
-            index--;
-        }
 
-        if(NodeToErase == head) {
-            head = NodeToErase->next;
-            tail->next = head;
-            head->prev = tail;
-        } else if(NodeToErase == tail) {
-            tail = NodeToErase->prev;
-            tail->next = head;
-            head->prev = tail;
+        if(NodeToErase == tail) {
+            tail = nullptr;
         } else {
             NodeToErase->prev->next = NodeToErase->next;
             NodeToErase->next->prev = NodeToErase->prev;
@@ -129,7 +119,7 @@ public:
 
 int main()
 {
-    DoubleLinkedList<int> list;
+    DoubleLinkedList<char*> list;
 
     int k, index;
     cin >> k;
@@ -145,25 +135,16 @@ int main()
 
             for(int j = 0; j < n; j++)
             {
-                int value;
+                char* value = new char[10];
                 cin >> value;
 
                 list.insert(index, value);
                 index++;
             }
-        } else if(input == "erase") {
-            int n;
-            cin >> index >> n;
-
-            for(int j = 0; j < n; j++)
-            {
-                list.erase(index);
-            }
         } else if(input == "print") {
             list.print();
         }
     }
-
 
     /*====================================================================================================*/
     /*====================================================================================================*/
