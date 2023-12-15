@@ -121,7 +121,7 @@ DLinkedList* reverseList(DLinkedList **original) {
         Node *tmp=(*original)->tail;
         addToList(&reversed, 1, tmp->value);
         for (unsigned long i=2;i<=(*original)->size;i++) {
-            Node *tmp=tmp->prev;
+            tmp=tmp->prev;
             addToList(&reversed, i, tmp->value);
         }
     }
@@ -148,11 +148,11 @@ DLinkedList* addLists(DLinkedList **first_L, DLinkedList **second_L) {
     short carry=0;
     unsigned long index=1;
     while (first || second || carry) {
-        int sum=(first->value?first->value:0)+(second->value?second->value:0)+carry;
+        int sum=(first!=nullptr?first->value:0)+(second!=nullptr?second->value:0)+carry;
         carry=sum/10;
         addToList(&result, index, sum%10);
-        first=first->next;
-        second=second->next;
+        if(first!=nullptr)first=first->next;
+        if(second!=nullptr)second=second->next;
         index++;
     }
     return result;
@@ -162,20 +162,23 @@ int main() {
     DLinkedList *list=createList();
     printList(&list);
 
-    addToList(&list, 1, 10);
-    addToList(&list, 2, 34234);
-    addToList(&list, 3, 0);
-    addToList(&list, 4, -9111);
-    addToList(&list, 5, 200);
-    addToList(&list, 6, -3);
-    addToList(&list, 7, 55);
+    addToList(&list, 1, 2);
+    addToList(&list, 2, 3);
+    addToList(&list, 3, 4);
+    addToList(&list, 4, 5);
+    addToList(&list, 5, 6);
+    addToList(&list, 6, 7);
+    addToList(&list, 7, 8);
     printList(&list);
 
     DLinkedList *reversed=reverseList(&list);
     printList(&reversed);
 
     cout << (compareLists(&list, &reversed)?"true":"false") << endl;
+    cout << (compareLists(&list, &list)?"true":"false") << endl;
 
-    deleteList(&list);
+    DLinkedList *sum=addLists(&reversed, &list);
+    printList(&sum);
+    deleteList(&list), deleteList(&reversed), deleteList(&sum);
     return 0;
 }
