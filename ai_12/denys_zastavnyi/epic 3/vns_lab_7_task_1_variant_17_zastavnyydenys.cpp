@@ -1,83 +1,67 @@
+#include <cstdarg>
+#include <vector>
 #include <iostream>
-#include <cmath>
+#include <algorithm>
+
 using namespace std;
-double findAverage(int arrlen, int arr[]) {
-  double sum = 0;
-  for (int i = 0; i < arrlen; i++)
-  {
-    sum += arr[i];
-  }
-  return sum / arrlen;
-}
-double findAverage(int arrlen, float arr[]) {
-  double sum = 0;
-  for (int i = 0; i < arrlen; i++)
-  {
-    sum += arr[i];
-  }
-  return sum / arrlen;
-}
-double findAverage(int arrlen, double arr[]) {
-  double sum = 0;
-  for (int i = 0; i < arrlen; i++)
-  {
-    sum += arr[i];
-  }
-  return sum / arrlen;
-}
 
-int countLetters(const char* str) {
-  int count = 0;
-  while (*str) {
-    if (isalpha(*str)) {
-      count++;
+bool isPrime(int n) {
+    if (n <= 1) {
+        return false;
     }
-    str++;
-  }
-  return count;
-}
-
-int countLetters(const string& str) {
-  int count = 0;
-  for (char ch : str) {
-    if (isalpha(ch)) {
-      count++;
+    for (int i = 2; i * i <= n; ++i) {
+        if (n % i == 0) {
+            return false;  
+        }
     }
-  }
-  return count;
+    return true; 
 }
 
+struct Interval {
+    int start;
+    int end;
+};
+
+vector<int> prost(int count, ...) {
+    vector<int> primeNumbers;
+    va_list args;
+    va_start(args, count);
+
+    for (int i = 0; i < count; ++i) {
+        Interval interval = va_arg(args, Interval);
+
+        for (int num = interval.start; num <= interval.end; ++num) {
+            if (isPrime(num)) {
+                primeNumbers.push_back(num);
+            }
+        }
+    }
+
+    va_end(args);
+    return primeNumbers;
+}
 
 int main() {
+    vector<int> result1 = prost(3, Interval{2, 10}, Interval{15, 25}, Interval{30, 40});
+    vector<int> result2 = prost(5, Interval{50, 60}, Interval{70, 80}, Interval{90, 100}, Interval{110, 120}, Interval{130, 140});
+    vector<int> result3 = prost(6, Interval{150, 160}, Interval{170, 180}, Interval{190, 200}, Interval{210, 220}, Interval{230, 240}, Interval{250, 260});
 
-  int xlen = 7;
-  int x[] = {15, 45, 78, 62, 30, 67, 12};
+    sort(result1.begin(), result1.end());
+    sort(result2.begin(), result2.end());
+    sort(result3.begin(), result3.end());
 
-  int ylen = 5;
-  float y[] = {32.16, 75.12, 65.3, 20.1, 6.603};
-
-  int zlen = 9;
-  double z[] = { 95.21, 96.12, 20.1, 6.603,32.16, 75.12, 65.3, 14.20, 78.36};
-
-
-  double xAverage = findAverage(xlen, x);
-  cout << "Average of integer array x: " << xAverage << endl;
-
-  double yAverage = findAverage(ylen, y);
-  cout << "Average of float array y: " << yAverage << endl;
-
-  double zAverage = findAverage(zlen, z);
-  cout << "Average of double array z: " << zAverage << endl;
-
-
-  const char* charString = "Hello World!";
-  string strString = "The quick brown fox jumps over the lazy dog.";
-
-  int charStringCount = countLetters(charString);
-  cout << "Number of letters in charString: " << charStringCount << endl;
-
-  int strStringCount = countLetters(strString);
-  cout << "Number of letters in strString: " << strStringCount << endl;
+    cout << "Prime numbers (3 intervals): ";
+    for (int prime : result1) {
+        cout << prime << " ";
+    }
+    cout << endl << "Prime numbers (5 intervals): ";
+    for (int prime : result2) {
+        cout << prime << " ";
+    }
+    cout << endl << "Prime numbers (6 intervals): ";
+    for (int prime : result3) {
+        cout << prime << " ";
+    }
 
     return 0;
 }
