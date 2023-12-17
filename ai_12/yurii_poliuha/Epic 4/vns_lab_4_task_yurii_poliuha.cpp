@@ -49,13 +49,6 @@ int main(){
 
     //Двонаправлене кільце вліву сторону
 
-    if(array.size() < 3) {
-        for(int i = 0; i < array.size(); i++){
-            cout << array[i] << "  ";
-        }
-        return 0;
-    }
-
     for(int i = K - 1; i >= 0; i--){
         cout << array[i] << "  ";
     }

@@ -38,6 +38,7 @@ int main(){
         }
     }
     unique = N + M - count;
+    cout << endl;
     cout << count << endl;
     cout << unique << endl;
     return 0;
