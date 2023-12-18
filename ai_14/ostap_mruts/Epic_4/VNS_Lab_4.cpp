@@ -21,11 +21,9 @@ int main() {
     cout << "Елементи від K до K+1: ";
     printArray(circular_array, K, K + 1);
 
-    // Додавання першого і останнього елементів в кінець кільця
     circular_array.push_back(circular_array[0]);
     circular_array.push_back(circular_array[circular_array.size() - 2]);
 
-    // Видалення непарних елементів з кільця
     vector<int> updated_array;
     for (int num : circular_array) {
         if (num % 2 == 0) {
