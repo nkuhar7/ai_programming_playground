@@ -3,26 +3,29 @@
 
 using namespace std;
 
+void printArray(const vector<int>& arr, int start, int end) {
+    for (int i = start; i <= end; ++i) {
+        cout << arr[i % arr.size()] << " ";
+    }
+    cout << endl;
+}
+
 int main() {
     vector<int> circular_array = {1, 5, 12, 97, 18, 36, 77, 19, 56, 23};
 
     cout << "Початкове кільце: ";
-    for (int i = 0; i < circular_array.size(); ++i) {
-        cout << circular_array[i] << " ";
-    }
-    cout << endl;
+    printArray(circular_array, 0, circular_array.size() - 1);
 
     int K = 3;
 
     cout << "Елементи від K до K+1: ";
-    for (int i = K; i <= K + 1; ++i) {
-        cout << circular_array[i % circular_array.size()] << " ";
-    }
-    cout << endl;
+    printArray(circular_array, K, K + 1);
 
+    // Додавання першого і останнього елементів в кінець кільця
     circular_array.push_back(circular_array[0]);
     circular_array.push_back(circular_array[circular_array.size() - 2]);
 
+    // Видалення непарних елементів з кільця
     vector<int> updated_array;
     for (int num : circular_array) {
         if (num % 2 == 0) {
@@ -31,16 +34,10 @@ int main() {
     }
 
     cout << "Оновлене кільце без непарних елементів: ";
-    for (int i = 0; i < updated_array.size(); ++i) {
-        cout << updated_array[i] << " ";
-    }
-    cout << endl;
+    printArray(updated_array, 0, updated_array.size() - 1);
 
     cout << "Елементи від K до K+1 після змін: ";
-    for (int i = K; i <= K + 1; ++i) {
-        cout << updated_array[i % updated_array.size()] << " ";
-    }
-    cout << endl;
+    printArray(updated_array, K, K + 1);
 
     return 0;
 }
